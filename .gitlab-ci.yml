@@ -1,0 +1,11 @@
+# Site statique : rien à construire. Sur main, le dossier public/ est publié par GitLab Pages
+# (si Pages est activé sur l'instance). La version publique est sur GitHub Pages (.github/workflows/pages.yml).
+
+pages:
+  image: alpine:3.22
+  script:
+    - test -f public/index.html
+  artifacts:
+    paths: [public]
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
