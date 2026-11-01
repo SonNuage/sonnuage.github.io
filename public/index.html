@@ -51,7 +51,7 @@
           <a class="btn btn-ghost" href="#comparatif">Comparer aux alternatives</a>
         </div>
         <ul class="chips reveal" aria-label="En bref">
-          <li>1 conteneur</li><li>Base SQLite intégrée</li><li>Aucun port ouvert</li><li>FR · EN</li>
+          <li>1 conteneur</li><li>Base SQLite intégrée</li><li>Prêt pour un tunnel Cloudflare</li><li>FR · EN</li>
         </ul>
       </div>
 
@@ -99,8 +99,7 @@
           <p>SonNuage est né en <strong>août 2026</strong>. J'étais lassé des solutions classiques : aucune ne collait
             vraiment à mon usage. Il y avait toujours un compromis de trop, un service de plus à maintenir, une appli
             qui manquait, une fonction qui n'était pas pensée pour écouter sa propre musique au quotidien.</p>
-          <p>Alors j'ai construit celui que je voulais utiliser. Le projet est jeune et avance vite : attendez-vous à
-            des nouveautés régulières, et à quelques angles encore à arrondir.</p>
+          <p>Alors j'ai construit celui que je voulais utiliser. Le projet est jeune et avance vite.</p>
         </div>
         <ol class="timeline" aria-label="Étapes du projet">
           <li><b>Août 2026</b><span>Première ligne de code</span></li>
@@ -117,7 +116,8 @@
         <p class="eyebrow">L'auto-hébergement sans la corvée</p>
         <h2>Trois étapes, et c'est en ligne.</h2>
         <p class="sub">Un seul conteneur embarque le serveur, le client web, ffmpeg et la base de données.
-          Le tunnel Cloudflare fourni rend le service joignable de partout <em>sans ouvrir un seul port</em> sur votre box.</p>
+          Le déploiement d'exemple est prêt pour <em>votre propre</em> tunnel Cloudflare (un compte gratuit suffit) :
+          le service devient joignable de partout sans ouvrir un seul port sur votre box.</p>
       </div>
 
       <div class="install-grid">
@@ -147,7 +147,7 @@
 
       <div class="minis">
         <div class="mini reveal"><b class="count" data-to="1">0</b><span>conteneur, base SQLite incluse</span></div>
-        <div class="mini reveal"><b class="count" data-to="0" data-from="9">9</b><span>port ouvert sur votre box</span></div>
+        <div class="mini reveal"><b class="count" data-to="0" data-from="9">9</b><span>port ouvert sur votre box, avec votre tunnel Cloudflare</span></div>
         <div class="mini reveal"><b><span class="count" data-to="40">0</span> Mo</b><span>pour l'appli de bureau, sans Electron</span></div>
         <div class="mini reveal"><b>0,<span class="count" data-to="1">0</span> s</b><span>avant le premier octet transcodé</span></div>
       </div>
@@ -214,7 +214,7 @@
         <article class="card reveal">
           <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
           <h3>Sécurisé par défaut</h3>
-          <p>Aucun port exposé grâce au tunnel, limitation des tentatives de connexion, flux protégés par jeton
+          <p>Aucun port à exposer avec un tunnel Cloudflare, limitation des tentatives de connexion, flux protégés par jeton
             et jamais mis en cache par le CDN.</p>
         </article>
       </div>
@@ -272,7 +272,7 @@
             </tr>
             <tr>
               <th scope="row">Accès distant sans ouvrir de port</th>
-              <td class="us"><span class="yes">Tunnel inclus</span></td><td><span class="mid">À configurer</span></td><td><span class="mid">À configurer</span></td><td><span class="yes">Relais Plex</span></td><td><span class="mid">À configurer</span></td><td><span class="mid">À configurer</span></td><td><span class="mid">À configurer</span></td>
+              <td class="us"><span class="mid">Votre tunnel Cloudflare, préconfiguré</span></td><td><span class="mid">À configurer</span></td><td><span class="mid">À configurer</span></td><td><span class="yes">Relais Plex</span></td><td><span class="mid">À configurer</span></td><td><span class="mid">À configurer</span></td><td><span class="mid">À configurer</span></td>
             </tr>
             <tr>
               <th scope="row">Aucun compte chez un tiers</th>
