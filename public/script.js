@@ -1,5 +1,16 @@
 (() => {
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const en = document.documentElement.lang === "en";
+
+  // Langue : le choix fait avec le bouton FR/EN est retenu ; sans choix, un navigateur qui ne parle pas
+  // français arrivant sur la page française est envoyé vers la version anglaise.
+  const store = (k, v) => { try { return v === undefined ? localStorage.getItem(k) : localStorage.setItem(k, v); } catch { return null; } };
+  for (const a of document.querySelectorAll("a[data-lang]")) a.addEventListener("click", () => store("lang", a.dataset.lang));
+  if (!en) {
+    const chosen = store("lang");
+    const prefersFrench = (navigator.languages ?? [navigator.language]).some((l) => /^fr\b/i.test(l));
+    if (chosen === "en" || (!chosen && !prefersFrench)) { location.replace("en/" + location.hash); return; }
+  }
 
   // Barre de navigation opaque dès qu'on défile
   const nav = document.getElementById("nav");
@@ -74,7 +85,12 @@
       player.style.removeProperty("--rx");
     });
   }
-  const tracks = [
+  const tracks = en ? [
+    ["Midnight Clouds", "The Electric Dreamers", 228],
+    ["Cumulus", "Pocket Orchestra", 194],
+    ["Rain on the Roof", "Mary and the Waves", 251],
+    ["Altitude", "Binary Sun", 207],
+  ] : [
     ["Nuages de minuit", "Les Rêveurs Électriques", 228],
     ["Cumulus", "Orchestre de Poche", 194],
     ["Pluie sur le toit", "Marie et les Ondes", 251],
@@ -119,19 +135,19 @@
   const term = document.getElementById("term");
   const steps = document.querySelectorAll(".step");
   const script = [
-    { step: 0, c: "# 1. Récupérer le déploiement" },
+    { step: 0, c: en ? "# 1. Get the deployment" : "# 1. Récupérer le déploiement" },
     { step: 0, cmd: "git clone https://github.com/SonNuage/sonnuage.git" },
     { step: 0, cmd: "cd sonnuage/deploy && cp .env.example .env" },
-    { step: 1, c: "# 2. Votre musique, votre mot de passe, votre tunnel" },
+    { step: 1, c: en ? "# 2. Your music, your password, your tunnel" : "# 2. Votre musique, votre mot de passe, votre tunnel" },
     { step: 1, cmd: "nano .env" },
-    { step: 1, kv: ["MUSIC_DIR", "/srv/musique"] },
+    { step: 1, kv: ["MUSIC_DIR", en ? "/srv/music" : "/srv/musique"] },
     { step: 1, kv: ["SONNUAGE_ADMIN_PASSWORD", "••••••••••••"] },
     { step: 1, kv: ["CLOUDFLARE_TUNNEL_TOKEN", "eyJhIjoi…"] },
-    { step: 2, c: "# 3. Démarrer" },
+    { step: 2, c: en ? "# 3. Start" : "# 3. Démarrer" },
     { step: 2, cmd: "docker compose up -d" },
     { step: 2, ok: " ✔ Container sonnuage          Healthy" },
     { step: 2, ok: " ✔ Container sonnuage-tunnel   Started" },
-    { step: 2, out: "\n→ Ouvrez https://musique.mondomaine.fr : c'est prêt." },
+    { step: 2, out: en ? "\n→ Open https://music.mydomain.com: you're all set." : "\n→ Ouvrez https://musique.mondomaine.fr : c'est prêt." },
   ];
   const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
   const lineHtml = (l, text) => {

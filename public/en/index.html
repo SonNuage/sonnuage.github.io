@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SonNuage, your self-hosted music</title>
+  <meta name="description" content="SonNuage is a self-hosted, Spotify-like music server: web, Android, Android Auto and desktop. One container, five minutes, AGPL-3.0 licence.">
+  <meta name="theme-color" content="#0b0f22">
+  <meta property="og:title" content="SonNuage, your self-hosted music">
+  <meta property="og:description" content="Stream your own library on the web, Android, Android Auto and desktop. One container, five minutes.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="fr" href="https://sonnuage.github.io/">
+  <link rel="alternate" hreflang="en" href="https://sonnuage.github.io/en/">
+  <link rel="alternate" hreflang="x-default" href="https://sonnuage.github.io/">
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <canvas id="stars"></canvas>
+  </div>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="SonNuage, home">
+      <img src="../assets/logo.svg" alt="" width="34" height="34">
+      <span>SonNuage</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#story">Story</a>
+      <a href="#features">Features</a>
+      <a href="#install">Install</a>
+      <a href="#compare">Compare</a>
+      <a href="#free">Free software</a>
+    </nav>
+    <div class="nav-end">
+      <a class="lang" href="../" hreflang="fr" lang="fr" data-lang="fr" title="Version française">FR</a>
+      <a class="btn btn-small" href="https://github.com/SonNuage/sonnuage">Source code</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Home -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow reveal">Self-hosted music server · AGPL-3.0</p>
+        <h1 class="reveal">Your music.<br><span class="grad">Your cloud.</span><br>Everywhere.</h1>
+        <p class="lead reveal">SonNuage streams your library like a streaming service, but from
+          <strong>your</strong> machine: web player, Android app with Android Auto, desktop app.
+          No subscription, no third-party account, no ads.</p>
+        <div class="cta reveal">
+          <a class="btn btn-primary" href="#install">Install in 5 minutes</a>
+          <a class="btn btn-ghost" href="#compare">Compare with alternatives</a>
+        </div>
+        <ul class="chips reveal" aria-label="In short">
+          <li>1 container</li><li>Built-in SQLite database</li><li>Ready for a Cloudflare tunnel</li><li>FR · EN</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual reveal" aria-hidden="true">
+        <div class="orbit"><span></span><span></span><span></span></div>
+        <div class="player" id="player">
+          <div class="cover">
+            <div class="cover-art"></div>
+            <div class="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+          <div class="meta">
+            <b class="track" id="track">Midnight Clouds</b>
+            <span class="artist" id="artist">The Electric Dreamers</span>
+          </div>
+          <div class="progress"><div class="bar" id="bar"></div></div>
+          <div class="times"><span id="elapsed">1:12</span><span>FLAC → Opus 128</span><span>3:48</span></div>
+          <div class="controls">
+            <span class="ic shuffle"></span>
+            <span class="ic prev"></span>
+            <span class="play"><span></span></span>
+            <span class="ic next"></span>
+            <span class="ic repeat"></span>
+          </div>
+        </div>
+        <div class="float-card fc1"><span class="dot ok"></span>First byte in 0.1 s</div>
+        <div class="float-card fc2"><span class="dot"></span>Android Auto connected</div>
+        <div class="float-card fc3"><span class="dot warn"></span>Next tracks cached</div>
+      </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Web</span><span>Android</span><span>Android Auto</span><span>Windows</span><span>macOS</span><span>Linux</span><span>Firefox · Chrome · Edge</span><span>FLAC</span><span>Opus</span><span>MP3</span><span>MusicBrainz</span><span>AcoustID</span>
+        <span>Web</span><span>Android</span><span>Android Auto</span><span>Windows</span><span>macOS</span><span>Linux</span><span>Firefox · Chrome · Edge</span><span>FLAC</span><span>Opus</span><span>MP3</span><span>MusicBrainz</span><span>AcoustID</span>
+      </div>
+    </div>
+
+    <!-- Story -->
+    <section class="section story" id="story">
+      <div class="story-card reveal">
+        <div class="story-text">
+          <p class="eyebrow">The story</p>
+          <h2>A young project, born of fatigue.</h2>
+          <p>SonNuage was born in <strong>August 2026</strong>. I was tired of the usual solutions: none of them really
+            fit the way I listen. There was always one compromise too many, one more service to maintain, a missing app,
+            a feature that wasn't designed for listening to your own music every day.</p>
+          <p>So I built the one I wanted to use. The project is young and moving fast.</p>
+        </div>
+        <ol class="timeline" aria-label="Project milestones">
+          <li><b>August 2026</b><span>First line of code</span></li>
+          <li><b>October 2026</b><span>YouTube import, task manager, search</span></li>
+          <li><b>November 2026</b><span>Desktop app, version 1.0 and open-sourcing</span></li>
+          <li class="next"><b>Next</b><span>Subsonic API, and whatever you suggest</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Install -->
+    <section class="section install" id="install">
+      <div class="section-head reveal">
+        <p class="eyebrow">Self-hosting without the chores</p>
+        <h2>Three steps, and you're online.</h2>
+        <p class="sub">A single container ships the server, the web client, ffmpeg and the database.
+          The sample deployment is ready for <em>your own</em> Cloudflare tunnel (a free account is enough):
+          the service is reachable from anywhere without opening a single port on your router.</p>
+      </div>
+
+      <div class="install-grid">
+        <ol class="steps">
+          <li class="step reveal" data-step="0">
+            <span class="num">1</span>
+            <div><h3>Get the deployment</h3>
+              <p>A sample <code>compose.yaml</code> and <code>.env</code>, nothing else.</p></div>
+          </li>
+          <li class="step reveal" data-step="1">
+            <span class="num">2</span>
+            <div><h3>Point it at your music folder</h3>
+              <p>It is mounted read-only: SonNuage never changes anything in it. YouTube imports and uploaded files go to a separate folder.</p></div>
+          </li>
+          <li class="step reveal" data-step="2">
+            <span class="num">3</span>
+            <div><h3>Start it</h3>
+              <p>The library is scanned, then watched: a copied album shows up on its own.</p></div>
+          </li>
+        </ol>
+
+        <div class="terminal reveal" role="img" aria-label="Terminal: cp .env.example .env, set MUSIC_DIR, then docker compose up -d">
+          <div class="term-bar"><i></i><i></i><i></i><span>~</span></div>
+          <pre class="term-body" id="term"></pre>
+        </div>
+      </div>
+
+      <div class="minis">
+        <div class="mini reveal"><b class="count" data-to="1">0</b><span>container, SQLite database included</span></div>
+        <div class="mini reveal"><b class="count" data-to="0" data-from="9">9</b><span>ports opened on your router, with your Cloudflare tunnel</span></div>
+        <div class="mini reveal"><b><span class="count" data-to="40">0</span> MB</b><span>for the desktop app, no Electron</span></div>
+        <div class="mini reveal"><b>0.<span class="count" data-to="1">0</span> s</b><span>to the first transcoded byte</span></div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+      <div class="section-head reveal">
+        <p class="eyebrow">Everything you expect from a streaming service</p>
+        <h2>Built for listening, not for the demo.</h2>
+      </div>
+
+      <div class="features">
+        <article class="card reveal">
+          <div class="icon">
+            <svg viewBox="0 0 24 24"><path d="M4 5h6l2 2h8v12H4z"/><path d="M9 15a1.5 1.5 0 1 0 0-.01M15 13a1.5 1.5 0 1 0 0-.01M10.5 15V10l6-1.5V13"/></svg>
+          </div>
+          <h3>A living library</h3>
+          <p>Incremental tag scan, fallback to <code>Artist/Album/NN title</code>, embedded or folder covers,
+            "(1)" duplicates skipped. The folder is watched continuously.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+          <h3>Instant transcoding</h3>
+          <p>Original, FLAC, MP3 320 down to 64. The stream starts while encoding, then stays cached.
+            A file is never "upscaled".</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg></div>
+          <h3>Flaky network? No problem</h3>
+          <p>Next tracks preloaded, 1 GB disk cache and 5-minute buffer on Android, automatic resume,
+            separate quality on mobile data.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M5 17h14l-1.5-6.5A2 2 0 0 0 15.6 9H8.4a2 2 0 0 0-1.9 1.5zM5 17v2M19 17v2"/><circle cx="8" cy="14" r="1"/><circle cx="16" cy="14" r="1"/></svg></div>
+          <h3>Android &amp; Android Auto</h3>
+          <p>A real app, with lock screen controls, Playlists, Albums, Artists and Recent tabs in the car,
+            search and voice commands.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
+          <h3>Lightweight desktop</h3>
+          <p>Windows, macOS and Linux, with a system tray icon. Written in .NET on the system webview:
+            no bundled Chromium.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg></div>
+          <h3>Careful YouTube import</h3>
+          <p>Search, playlists, channels, synced subscriptions. Metadata rebuilt from MusicBrainz and the
+            AcoustID fingerprint, official cover art, audio never re-encoded. Admins only.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+          <h3>Forgiving search</h3>
+          <p>With no setup: substrings, accent-insensitive. With optional Elasticsearch: typos,
+            "Did you mean…?", <code>acdc</code> finds AC/DC.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+          <h3>Full administration</h3>
+          <p>Dashboard, resumable album uploads, tag and cover editing, accounts,
+            live task queue.</p>
+        </article>
+        <article class="card reveal">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Secure by default</h3>
+          <p>No port to expose with a Cloudflare tunnel, login rate limiting, token-protected streams
+            that are never cached by the CDN.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Clients -->
+    <section class="section clients">
+      <div class="section-head reveal">
+        <p class="eyebrow">One server, all your devices</p>
+        <h2>The same interface, everywhere.</h2>
+        <p class="sub">Pages are shared between the web, Android and desktop: a new feature reaches every client at once.</p>
+      </div>
+      <div class="devices reveal">
+        <div class="device d-web"><span>Browser</span></div>
+        <div class="device d-desk"><span>Desktop</span></div>
+        <div class="device d-phone"><span>Android</span></div>
+        <div class="device d-car"><span>Android Auto</span></div>
+        <div class="device d-ext"><span>Extension</span></div>
+        <svg class="links" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M100 100 Q500 -40 900 100" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="section" id="compare">
+      <div class="section-head reveal">
+        <p class="eyebrow">An honest comparison</p>
+        <h2>SonNuage and the alternatives.</h2>
+        <p class="sub">Each has its strengths: this table also shows what SonNuage doesn't do (yet).</p>
+      </div>
+
+      <div class="table-wrap reveal" tabindex="0" aria-label="Comparison table, scrolls horizontally">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th scope="col"><span class="sr">Criterion</span></th>
+              <th scope="col" class="us">SonNuage</th>
+              <th scope="col">Navidrome</th>
+              <th scope="col">Jellyfin</th>
+              <th scope="col">Plex + Plexamp</th>
+              <th scope="col">Funkwhale</th>
+              <th scope="col">Ampache</th>
+              <th scope="col">Koel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Licence</th>
+              <td class="us">AGPL-3.0</td><td>GPL-3.0</td><td>GPL-2.0</td><td><span class="no">Proprietary</span></td><td>AGPL-3.0</td><td>AGPL-3.0</td><td>MIT</td>
+            </tr>
+            <tr>
+              <th scope="row">Services to deploy</th>
+              <td class="us"><span class="yes">1 container</span></td><td><span class="yes">1 binary or container</span></td><td><span class="yes">1 container</span></td><td><span class="yes">1 server</span></td><td><span class="no">Postgres, Redis, workers, proxy</span></td><td><span class="mid">PHP + MariaDB</span></td><td><span class="mid">PHP + database</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Remote access without opening a port</th>
+              <td class="us"><span class="mid">Your Cloudflare tunnel, preconfigured</span></td><td><span class="mid">To configure</span></td><td><span class="mid">To configure</span></td><td><span class="yes">Plex relay</span></td><td><span class="mid">To configure</span></td><td><span class="mid">To configure</span></td><td><span class="mid">To configure</span></td>
+            </tr>
+            <tr>
+              <th scope="row">No third-party account</th>
+              <td class="us"><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="no">Plex account required</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Official Android app</th>
+              <td class="us"><span class="yes">Yes</span></td><td><span class="mid">Third-party Subsonic clients</span></td><td><span class="mid">Video-oriented, third-party Finamp</span></td><td><span class="yes">Plexamp</span></td><td><span class="mid">Third-party clients</span></td><td><span class="mid">Third-party clients</span></td><td><span class="mid">Depends on edition</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Android Auto</th>
+              <td class="us"><span class="yes">Native</span></td><td><span class="mid">Via third-party clients</span></td><td><span class="mid">Via third-party clients</span></td><td><span class="yes">Native</span></td><td><span class="mid">Via third-party clients</span></td><td><span class="mid">Via third-party clients</span></td><td><span class="mid">Not documented</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Official desktop app</th>
+              <td class="us"><span class="yes">Win · Mac · Linux</span></td><td><span class="mid">Third-party clients</span></td><td><span class="mid">Video-oriented</span></td><td><span class="yes">Plexamp</span></td><td><span class="no">Web only</span></td><td><span class="no">Web only</span></td><td><span class="no">Web only</span></td>
+            </tr>
+            <tr>
+              <th scope="row">YouTube import + MusicBrainz / AcoustID metadata</th>
+              <td class="us"><span class="yes">Built in</span></td><td><span class="no">No</span></td><td><span class="no">No</span></td><td><span class="no">No</span></td><td><span class="no">No</span></td><td><span class="no">No</span></td><td><span class="no">No</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Typo-tolerant search</th>
+              <td class="us"><span class="yes">With Elasticsearch</span></td><td><span class="mid">Basic</span></td><td><span class="mid">Basic</span></td><td><span class="yes">Yes</span></td><td><span class="mid">Basic</span></td><td><span class="mid">Basic</span></td><td><span class="mid">Basic</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Subsonic API compatible</th>
+              <td class="us"><span class="no">No</span></td><td><span class="yes">Yes</span></td><td><span class="mid">Via plugin</span></td><td><span class="no">No</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="no">No</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Federation (ActivityPub)</th>
+              <td class="us"><span class="no">No</span></td><td><span class="no">No</span></td><td><span class="no">No</span></td><td><span class="no">No</span></td><td><span class="yes">Yes</span></td><td><span class="no">No</span></td><td><span class="no">No</span></td>
+            </tr>
+            <tr>
+              <th scope="row">Movies and TV shows</th>
+              <td class="us"><span class="mid">Music only</span></td><td><span class="mid">Music only</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="mid">Music and podcasts</span></td><td><span class="mid">Mostly music</span></td><td><span class="mid">Music and podcasts</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note reveal">Based on each project's public documentation as of November 2026. Spotted a mistake? Open an issue and we'll fix it.</p>
+    </section>
+
+    <!-- Free software -->
+    <section class="section libre" id="free">
+      <div class="libre-card reveal">
+        <div class="libre-text">
+          <p class="eyebrow">Free software</p>
+          <h2>The code belongs to you too.</h2>
+          <p>SonNuage is released under the <strong>GNU AGPL v3.0 or later</strong>: use it, study it, change it,
+            share it. A modified version, even one offered online, must publish its code under the same licence.
+            Nobody can close the project.</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="https://github.com/SonNuage/sonnuage">Server and web client</a>
+            <a class="btn btn-ghost" href="https://github.com/SonNuage/sonnuage-android">Android</a>
+            <a class="btn btn-ghost" href="https://github.com/SonNuage/sonnuage-desktop">Desktop</a>
+            <a class="btn btn-ghost" href="https://github.com/SonNuage/sonnuage-extension">Extension</a>
+          </div>
+        </div>
+        <div class="libre-visual" aria-hidden="true">
+          <img src="../assets/logo.svg" alt="" width="160" height="160">
+        </div>
+      </div>
+    </section>
+    <!-- A note on AI -->
+    <section class="section ai-note" id="ai">
+      <div class="ai-card reveal">
+        <div class="ai-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.5"/></svg>
+        </div>
+        <div>
+          <p class="eyebrow">Transparency</p>
+          <h2>A note on the use of AI.</h2>
+          <p>Several AIs contributed to SonNuage's code, including <strong>Opus 5.5</strong>, <strong>Muse Spark 1.3</strong>
+            and other models. My role shifted towards <strong>steering</strong> and <strong>reviewing</strong>:
+            deciding what to build, settling architecture choices, reviewing, testing in real conditions.</p>
+          <p>The code is open, and so am I to any review: a remark, a criticism or a proposed fix
+            is welcome.</p>
+          <div class="cta">
+            <a class="btn btn-ghost" href="https://github.com/SonNuage/sonnuage">Review the code</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div><img src="../assets/logo.svg" alt="" width="22" height="22"> SonNuage · <em>SoundCloud</em>, in French.</div>
+    <div>© 2026 pmj.bailly and contributors · AGPL-3.0-or-later</div>
+  </footer>
+
+  <script src="../script.js" defer></script>
+</body>
+</html>

@@ -63,6 +63,9 @@ code { font-family: var(--mono); font-size: 0.86em; background: var(--panel-stro
 .nav nav { display: flex; gap: 6px; }
 .nav nav a { text-decoration: none; color: var(--muted); font-size: 15px; padding: 6px 12px; border-radius: 999px; transition: color 0.2s, background 0.2s; }
 .nav nav a:hover { color: var(--text); background: var(--panel-strong); }
+.nav-end { display: flex; align-items: center; gap: 8px; }
+.lang { text-decoration: none; color: var(--muted); font: 600 13px var(--mono); letter-spacing: 0.06em; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); transition: color 0.2s, background 0.2s; }
+.lang:hover { color: var(--text); background: var(--panel-strong); }
 
 /* Boutons */
 .btn {
