@@ -120,7 +120,7 @@
   const steps = document.querySelectorAll(".step");
   const script = [
     { step: 0, c: "# 1. Récupérer le déploiement" },
-    { step: 0, cmd: "git clone https://git.pmjb.org/sonnuage/sonnuage.git" },
+    { step: 0, cmd: "git clone https://github.com/SonNuage/sonnuage.git" },
     { step: 0, cmd: "cd sonnuage/deploy && cp .env.example .env" },
     { step: 1, c: "# 2. Votre musique, votre mot de passe, votre tunnel" },
     { step: 1, cmd: "nano .env" },

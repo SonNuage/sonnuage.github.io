@@ -1,6 +1,6 @@
 # sonnuage-site
 
-Page de présentation de [SonNuage](https://git.pmjb.org/sonnuage/sonnuage), serveur de musique auto-hébergé.
+Page de présentation de [SonNuage](https://github.com/SonNuage/sonnuage), serveur de musique auto-hébergé.
 
 Site statique sans étape de build : `public/index.html`, `public/styles.css`, `public/script.js` et le logo.
 Polices Google Fonts, aucune autre dépendance. Les animations respectent `prefers-reduced-motion`.
