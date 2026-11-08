@@ -2,8 +2,22 @@
 
 Page de présentation de [SonNuage](https://github.com/SonNuage/sonnuage), serveur de musique auto-hébergé, en ligne sur https://sonnuage.github.io/.
 
-Site statique sans étape de build : `public/index.html`, `public/styles.css`, `public/script.js` et le logo.
-Polices Google Fonts, aucune autre dépendance. Les animations respectent `prefers-reduced-motion`.
+Site statique sans étape de build : `public/index.html` (français), `public/en/index.html` (anglais),
+`public/styles.css`, `public/script.js` et le logo. Le bouton FR/EN retient le choix ; sans choix, un navigateur
+qui ne parle pas français est envoyé vers `/en/`. Polices Google Fonts, aucune autre dépendance. Les animations
+respectent `prefers-reduced-motion`.
+
+Les deux pages sont des traductions tenues à la main : toute modification se fait dans les deux, avec la même
+structure. Chaque fait annoncé se vérifie dans le code ou dans `sonnuage/docs/ROADMAP.md`.
+
+## Vérifications
+
+```bash
+node tests/check.mjs
+```
+
+Même structure en FR et en EN, ancres, hreflang, accessibilité (alt, titres, SVG, contraste AA), liste des dépôts et
+fonctionnalités récentes. Lancé par la CI GitLab (job `check`) et avant chaque publication GitHub Pages.
 
 ## Aperçu local
 
@@ -20,7 +34,8 @@ Puis http://localhost:5090.
   racine) et reçoit ce dépôt par le miroir GitLab. Source Pages : *GitHub Actions*.
 - **GitLab Pages** : job `pages` de [.gitlab-ci.yml](.gitlab-ci.yml), si Pages est activé sur l'instance.
 
-Le comparatif avec les autres serveurs se met à jour à la main dans `public/index.html` (section `#comparatif`).
+Le comparatif avec les autres serveurs se met à jour à la main dans les deux pages (sections `#comparatif` et
+`#compare`).
 
 ## Licence
 
