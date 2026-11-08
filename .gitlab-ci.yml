@@ -1,7 +1,17 @@
-# Site statique : rien à construire. Sur main, le dossier public/ est publié par GitLab Pages
-# (si Pages est activé sur l'instance). La version publique est sur GitHub Pages (.github/workflows/pages.yml).
+# Site statique : rien à construire. Chaque push vérifie les deux pages (tests/check.mjs) ; sur main, le dossier
+# public/ est ensuite publié par GitLab Pages (si Pages est activé sur l'instance). La version publique est sur
+# GitHub Pages (.github/workflows/pages.yml), qui lance la même vérification avant de publier.
+
+stages: [test, deploy]
+
+check:
+  stage: test
+  image: node:22-alpine
+  script:
+    - node tests/check.mjs
 
 pages:
+  stage: deploy
   image: alpine:3.22
   script:
     - test -f public/index.html
