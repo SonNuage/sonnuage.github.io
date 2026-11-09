@@ -18,6 +18,8 @@ const facts = [
   { fr: /titres les plus écoutés/i, en: /most played tracks/i },
   { fr: /suivent (le|votre) compte/i, en: /follow (the|your) account/i },
   { fr: /appli iOS/, en: /iOS app/ },
+  { fr: /API Subsonic/, en: /Subsonic API/ },
+  { fr: /paroles synchronisées/i, en: /synced lyrics/i },
 ];
 
 const voids = new Set(["meta", "link", "img", "br", "input", "source", "hr", "wbr"]);

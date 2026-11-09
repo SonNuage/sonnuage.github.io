@@ -33,6 +33,7 @@
     <nav aria-label="Sections">
       <a href="#histoire">Histoire</a>
       <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#subsonic">Subsonic</a>
       <a href="#installer">Installer</a>
       <a href="#comparatif">Comparatif</a>
       <a href="#libre">Libre</a>
@@ -110,8 +111,8 @@
         <ol class="timeline" aria-label="Étapes du projet">
           <li><b>Août 2026</b><span>Première ligne de code</span></li>
           <li><b>Octobre 2026</b><span>Import YouTube, gestionnaire de tâches, recherche</span></li>
-          <li><b>Novembre 2026</b><span>Appli de bureau, version 1.0 et passage en logiciel libre</span></li>
-          <li class="next"><b>Ensuite</b><span>API Subsonic, et ce que vous proposerez</span></li>
+          <li><b>Novembre 2026</b><span>Appli de bureau, version 1.0, logiciel libre, API Subsonic</span></li>
+          <li class="next"><b>Ensuite</b><span>Ce que vous proposerez</span></li>
         </ol>
       </div>
     </section>
@@ -241,6 +242,18 @@
           <p>Aucun port à exposer avec un tunnel Cloudflare, limitation des tentatives de connexion, flux protégés par jeton
             et jamais mis en cache par le CDN.</p>
         </article>
+        <article class="card reveal">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
+          <h3>Paroles synchronisées</h3>
+          <p>La ligne chantée suit la musique, un appui y saute. Un fichier <code>.lrc</code> à côté du titre passe en
+            premier, sinon LRCLIB, une base libre et sans compte.</p>
+        </article>
+        <article class="card card-wide reveal">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="2"/><rect x="14" y="4" width="7" height="16" rx="2"/><path d="M10 12h4"/></svg></div>
+          <h3>Applis Subsonic</h3>
+          <p>Symfonium, Feishin, DSub ou Tempo se branchent sur l'API Subsonic et OpenSubsonic, avec un mot de passe
+            dédié et révocable par compte. <a href="#subsonic">Ce qui est pris en charge</a></p>
+        </article>
       </div>
     </section>
 
@@ -262,6 +275,75 @@
           <path d="M100 100 Q500 -40 900 100" />
         </svg>
       </div>
+    </section>
+
+    <!-- Subsonic -->
+    <section class="section subsonic" id="subsonic">
+      <div class="section-head reveal">
+        <p class="eyebrow">API Subsonic et OpenSubsonic</p>
+        <h2>Vos applis Subsonic, branchées dessus.</h2>
+        <p class="sub">Depuis la version 1.16, SonNuage répond aussi à l’API Subsonic sous <code>/rest</code>. Symfonium, Feishin, DSub, Substreamer, Tempo… se connectent à votre bibliothèque, à côté des applis SonNuage, qui ne changent pas.</p>
+      </div>
+
+      <div class="api-layout">
+        <div class="api-connect reveal">
+          <h3>Se connecter</h3>
+          <ol class="api-steps">
+          <li><b>Réglages → Applis Subsonic</b><span>Générez un mot de passe dédié de 20 caractères. Celui de votre compte ne quitte jamais SonNuage.</span></li>
+          <li><b>Dans l’appli</b><span>L’adresse du serveur, votre nom d’utilisateur et ce mot de passe.</span></li>
+          <li><b>Révocable</b><span>Un clic le coupe sur tous les clients. Il sert aussi de clé <code>apiKey</code> OpenSubsonic.</span></li>
+          </ol>
+          <dl class="api-specs">
+          <div><dt>Authentification</dt><dd>Jeton salé (<code>t</code> et <code>s</code>), mot de passe (<code>p</code>, en clair ou <code>enc:</code>), clé <code>apiKey</code></dd></div>
+          <div><dt>Formats</dt><dd>XML, JSON et JSONP, en GET ou en formulaire POST</dd></div>
+          <div><dt>Extensions</dt><dd><code>apiKeyAuthentication</code> <code>formPost</code> <code>songLyrics</code> <code>transcodeOffset</code></dd></div>
+          <div><dt>Version</dt><dd>API 1.16.1, 36 méthodes, 52 avec les réponses vides</dd></div>
+          </dl>
+        </div>
+        <div class="api-groups" role="region" aria-label="Méthodes de l’API Subsonic prises en charge">
+          <h3 class="sr">Méthodes prises en charge</h3>
+          <article class="api-group reveal">
+            <h4>Parcourir</h4>
+            <p class="api-methods"><code>getArtists</code> <code>getIndexes</code> <code>getArtist</code> <code>getAlbum</code> <code>getSong</code> <code>getMusicDirectory</code> <code>getMusicFolders</code> <code>getGenres</code></p>
+            <p>Par artiste, album et genre (ID3), ou par dossiers pour DSub et les clients anciens. Index par lettre, «&nbsp;The&nbsp;», «&nbsp;Les&nbsp;», «&nbsp;Le&nbsp;», «&nbsp;La&nbsp;» ignorés.</p>
+          </article>
+          <article class="api-group reveal">
+            <h4>Listes et recherche</h4>
+            <p class="api-methods"><code>getAlbumList2</code> <code>getAlbumList</code> <code>getRandomSongs</code> <code>getSongsByGenre</code> <code>getTopSongs</code> <code>search3</code> <code>search2</code></p>
+            <p>Récents, fréquents, nouveautés, par année, par genre, au hasard. Recherche sans accents ; une recherche vide liste toute la bibliothèque par pages, pour la synchronisation.</p>
+          </article>
+          <article class="api-group reveal">
+            <h4>Écoute</h4>
+            <p class="api-methods"><code>stream</code> <code>download</code> <code>getCoverArt</code> <code>scrobble</code></p>
+            <p>Fichier d’origine, FLAC ou MP3 de 320 à 64 kbit/s selon <code>maxBitRate</code>, reprise en cours de titre (<code>timeOffset</code>). Les écoutes comptent dans vos titres les plus écoutés.</p>
+          </article>
+          <article class="api-group reveal">
+            <h4>Playlists et favoris</h4>
+            <p class="api-methods"><code>getPlaylists</code> <code>getPlaylist</code> <code>createPlaylist</code> <code>updatePlaylist</code> <code>deletePlaylist</code> <code>star</code> <code>unstar</code> <code>getStarred2</code> <code>getStarred</code></p>
+            <p>Les mêmes que dans les applis SonNuage. Favoris : titres seulement ; une étoile sur un album ou un artiste est acceptée sans effet.</p>
+          </article>
+          <article class="api-group reveal">
+            <h4>Paroles</h4>
+            <p class="api-methods"><code>getLyricsBySongId</code> <code>getLyrics</code></p>
+            <p>Synchronisées à la milliseconde quand elles le sont : fichier <code>.lrc</code> à côté du titre, sinon LRCLIB.</p>
+          </article>
+          <article class="api-group reveal">
+            <h4>Compte et serveur</h4>
+            <p class="api-methods"><code>ping</code> <code>getLicense</code> <code>getOpenSubsonicExtensions</code> <code>getUser</code> <code>getScanStatus</code> <code>startScan</code></p>
+            <p><code>startScan</code> renvoie l’état du scan : la bibliothèque est déjà surveillée en continu.</p>
+          </article>
+          <article class="api-group api-empty reveal">
+            <h4>Réponses vides, mais valides</h4>
+            <p class="api-methods"><code>getNowPlaying</code> <code>getPlayQueue</code> <code>savePlayQueue</code> <code>getArtistInfo</code> <code>getArtistInfo2</code> <code>getAlbumInfo</code> <code>getAlbumInfo2</code> <code>getSimilarSongs</code> <code>getSimilarSongs2</code> <code>getPodcasts</code> <code>getNewestPodcasts</code> <code>getInternetRadioStations</code> <code>getShares</code> <code>getBookmarks</code> <code>getVideos</code> <code>getChatMessages</code></p>
+            <p>Ces fonctions n’existent pas dans SonNuage : l’appli reçoit une liste vide et continue.</p>
+          </article>
+          <article class="api-group api-none reveal">
+            <h4>Non pris en charge</h4>
+            <p>Contrôle « jukebox », gestion des comptes et des partages, création de podcasts et de radios : réponse d’erreur standard.</p>
+          </article>
+        </div>
+      </div>
+      <p class="note reveal">Vérifié par les tests d’intégration du serveur ; les retours sur votre client sont bienvenus. Si votre domaine passe par Cloudflare Access, laissez passer <code>/rest/*</code> : les applis Subsonic ne savent pas s’y connecter.</p>
     </section>
 
     <!-- Comparatif -->
@@ -325,7 +407,7 @@
             </tr>
             <tr>
               <th scope="row">Compatible API Subsonic</th>
-              <td class="us"><span class="no">Non</span></td><td><span class="yes">Oui</span></td><td><span class="mid">Par extension</span></td><td><span class="no">Non</span></td><td><span class="yes">Oui</span></td><td><span class="yes">Oui</span></td><td><span class="no">Non</span></td>
+              <td class="us"><span class="yes">Oui, avec OpenSubsonic</span></td><td><span class="yes">Oui</span></td><td><span class="mid">Par extension</span></td><td><span class="no">Non</span></td><td><span class="yes">Oui</span></td><td><span class="yes">Oui</span></td><td><span class="no">Non</span></td>
             </tr>
             <tr>
               <th scope="row">Fédération (ActivityPub)</th>
