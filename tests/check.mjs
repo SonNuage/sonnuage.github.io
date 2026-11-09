@@ -20,6 +20,9 @@ const facts = [
   { fr: /appli iOS/, en: /iOS app/ },
   { fr: /API Subsonic/, en: /Subsonic API/ },
   { fr: /paroles synchronisées/i, en: /synced lyrics/i },
+  { fr: /radios thématiques/i, en: /themed radios/i },
+  { fr: /radio météo/i, en: /weather radio/i },
+  { fr: /notes de 1 à 5/i, en: /ratings from 1 to 5/i },
 ];
 
 const voids = new Set(["meta", "link", "img", "br", "input", "source", "hr", "wbr"]);
