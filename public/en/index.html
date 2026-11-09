@@ -282,68 +282,35 @@
       <div class="section-head reveal">
         <p class="eyebrow">Subsonic and OpenSubsonic API</p>
         <h2>Your Subsonic apps, plugged in.</h2>
-        <p class="sub">Since version 1.16, SonNuage also speaks the Subsonic API under <code>/rest</code>. Symfonium, Feishin, DSub, Substreamer, Tempo… connect to your library, alongside the SonNuage apps, which stay the same.</p>
+        <p class="sub">Symfonium, Feishin, DSub, Substreamer or Tempo connect to your library, alongside the SonNuage apps.</p>
+        <p class="api-how"><strong>To connect:</strong> Settings → Subsonic apps, generate a dedicated password, then give the app the server address, your username and that password. Revocable in one click.</p>
       </div>
 
-      <div class="api-layout">
-        <div class="api-connect reveal">
-          <h3>Connect</h3>
-          <ol class="api-steps">
-          <li><b>Settings → Subsonic apps</b><span>Generate a dedicated 20-character password. Your account password never leaves SonNuage.</span></li>
-          <li><b>In the app</b><span>The server address, your username and that password.</span></li>
-          <li><b>Revocable</b><span>One click cuts it off on every client. It also works as an OpenSubsonic <code>apiKey</code>.</span></li>
-          </ol>
-          <dl class="api-specs">
-          <div><dt>Authentication</dt><dd>Salted token (<code>t</code> and <code>s</code>), password (<code>p</code>, plain or <code>enc:</code>), <code>apiKey</code></dd></div>
-          <div><dt>Formats</dt><dd>XML, JSON and JSONP, over GET or form POST</dd></div>
-          <div><dt>Extensions</dt><dd><code>apiKeyAuthentication</code> <code>formPost</code> <code>songLyrics</code> <code>transcodeOffset</code></dd></div>
-          <div><dt>Version</dt><dd>API 1.16.1, 36 methods, 52 counting empty answers</dd></div>
-          </dl>
-        </div>
-        <div class="api-groups" role="region" aria-label="Supported Subsonic API methods">
-          <h3 class="sr">Supported methods</h3>
-          <article class="api-group reveal">
-            <h4>Browse</h4>
-            <p class="api-methods"><code>getArtists</code> <code>getIndexes</code> <code>getArtist</code> <code>getAlbum</code> <code>getSong</code> <code>getMusicDirectory</code> <code>getMusicFolders</code> <code>getGenres</code></p>
-            <p>By artist, album and genre (ID3), or by folders for DSub and older clients. Letter index that skips “The”, “Les”, “Le”, “La”.</p>
-          </article>
-          <article class="api-group reveal">
-            <h4>Lists and search</h4>
-            <p class="api-methods"><code>getAlbumList2</code> <code>getAlbumList</code> <code>getRandomSongs</code> <code>getSongsByGenre</code> <code>getTopSongs</code> <code>search3</code> <code>search2</code></p>
-            <p>Recent, frequent, newest, by year, by genre, random. Accent-insensitive search; an empty query pages through the whole library, for syncing.</p>
-          </article>
-          <article class="api-group reveal">
-            <h4>Listening</h4>
-            <p class="api-methods"><code>stream</code> <code>download</code> <code>getCoverArt</code> <code>scrobble</code></p>
-            <p>Original file, FLAC or MP3 from 320 down to 64 kbps depending on <code>maxBitRate</code>, start mid-track (<code>timeOffset</code>). Plays count towards your most played tracks.</p>
-          </article>
-          <article class="api-group reveal">
-            <h4>Playlists and favorites</h4>
-            <p class="api-methods"><code>getPlaylists</code> <code>getPlaylist</code> <code>createPlaylist</code> <code>updatePlaylist</code> <code>deletePlaylist</code> <code>star</code> <code>unstar</code> <code>getStarred2</code> <code>getStarred</code></p>
-            <p>The same ones as in the SonNuage apps. Favorites: tracks only; starring an album or an artist is accepted and ignored.</p>
-          </article>
-          <article class="api-group reveal">
-            <h4>Lyrics</h4>
-            <p class="api-methods"><code>getLyricsBySongId</code> <code>getLyrics</code></p>
-            <p>Synced to the millisecond when they are: a <code>.lrc</code> file next to the track, otherwise LRCLIB.</p>
-          </article>
-          <article class="api-group reveal">
-            <h4>Account and server</h4>
-            <p class="api-methods"><code>ping</code> <code>getLicense</code> <code>getOpenSubsonicExtensions</code> <code>getUser</code> <code>getScanStatus</code> <code>startScan</code></p>
-            <p><code>startScan</code> returns the scan status: the library is already watched continuously.</p>
-          </article>
-          <article class="api-group api-empty reveal">
-            <h4>Empty but valid answers</h4>
-            <p class="api-methods"><code>getNowPlaying</code> <code>getPlayQueue</code> <code>savePlayQueue</code> <code>getArtistInfo</code> <code>getArtistInfo2</code> <code>getAlbumInfo</code> <code>getAlbumInfo2</code> <code>getSimilarSongs</code> <code>getSimilarSongs2</code> <code>getPodcasts</code> <code>getNewestPodcasts</code> <code>getInternetRadioStations</code> <code>getShares</code> <code>getBookmarks</code> <code>getVideos</code> <code>getChatMessages</code></p>
-            <p>These features don’t exist in SonNuage: the app gets an empty list and carries on.</p>
-          </article>
-          <article class="api-group api-none reveal">
-            <h4>Not supported</h4>
-            <p>Jukebox control, user and share management, creating podcasts and radio stations: standard error answer.</p>
-          </article>
-        </div>
+      <div class="api-wrap reveal" role="region" aria-label="Subsonic API support">
+        <table class="api-table">
+          <thead>
+            <tr><th scope="col">Feature</th><th scope="col">Support</th><th scope="col">Comment</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Library: artists, albums, tracks, genres</th><td><span class="yes">Yes</span></td><td>By tags or by folders.</td></tr>
+            <tr><th scope="row">Search</th><td><span class="yes">Yes</span></td><td>Accent-insensitive. An empty query lists everything, for syncing.</td></tr>
+            <tr><th scope="row">Streaming and transcoding</th><td><span class="yes">Yes</span></td><td>Original, FLAC or MP3 from 320 to 64 kbps, start mid-track.</td></tr>
+            <tr><th scope="row">Downloads and cover art</th><td><span class="yes">Yes</span></td><td></td></tr>
+            <tr><th scope="row">Playlists</th><td><span class="yes">Yes</span></td><td>The same as in the SonNuage apps.</td></tr>
+            <tr><th scope="row">Play history (scrobble)</th><td><span class="yes">Yes</span></td><td>Counts towards your most played tracks.</td></tr>
+            <tr><th scope="row">Lyrics</th><td><span class="yes">Yes</span></td><td>Synced: <code>.lrc</code> file or LRCLIB.</td></tr>
+            <tr><th scope="row">Album lists</th><td><span class="mid">Partly</span></td><td>“Highest rated” returns the most played: SonNuage has no ratings.</td></tr>
+            <tr><th scope="row">Favorites</th><td><span class="mid">Partly</span></td><td>Tracks only. Starring an album or an artist is ignored.</td></tr>
+            <tr><th scope="row">Start a scan</th><td><span class="mid">Partly</span></td><td>Not needed: the library is watched continuously.</td></tr>
+            <tr><th scope="row">Ratings (1 to 5 stars)</th><td><span class="no">No</span></td><td></td></tr>
+            <tr><th scope="row">Play queue shared across devices</th><td><span class="no">No</span></td><td>Empty answer, the app carries on.</td></tr>
+            <tr><th scope="row">Artist info, similar tracks</th><td><span class="no">No</span></td><td>Empty answer, the app carries on.</td></tr>
+            <tr><th scope="row">Podcasts, radio, shares, bookmarks</th><td><span class="no">No</span></td><td>Empty answer, the app carries on.</td></tr>
+            <tr><th scope="row">Jukebox, user management</th><td><span class="no">No</span></td><td></td></tr>
+          </tbody>
+        </table>
       </div>
-      <p class="note reveal">Covered by the server’s integration tests; feedback about your client is welcome. If your domain sits behind Cloudflare Access, let <code>/rest/*</code> through: Subsonic apps can’t sign in to it.</p>
+      <p class="note reveal">API 1.16.1: token, password or <code>apiKey</code>; XML, JSON and JSONP. OpenSubsonic extensions: <code>apiKeyAuthentication</code>, <code>formPost</code>, <code>songLyrics</code>, <code>transcodeOffset</code>. Behind Cloudflare Access, let <code>/rest/*</code> through.</p>
     </section>
 
     <!-- Comparison -->

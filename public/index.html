@@ -282,68 +282,35 @@
       <div class="section-head reveal">
         <p class="eyebrow">API Subsonic et OpenSubsonic</p>
         <h2>Vos applis Subsonic, branchées dessus.</h2>
-        <p class="sub">Depuis la version 1.16, SonNuage répond aussi à l’API Subsonic sous <code>/rest</code>. Symfonium, Feishin, DSub, Substreamer, Tempo… se connectent à votre bibliothèque, à côté des applis SonNuage, qui ne changent pas.</p>
+        <p class="sub">Symfonium, Feishin, DSub, Substreamer ou Tempo se connectent à votre bibliothèque, à côté des applis SonNuage.</p>
+        <p class="api-how"><strong>Pour se connecter :</strong> Réglages → Applis Subsonic, générez un mot de passe dédié, puis donnez à l’appli l’adresse du serveur, votre nom d’utilisateur et ce mot de passe. Révocable en un clic.</p>
       </div>
 
-      <div class="api-layout">
-        <div class="api-connect reveal">
-          <h3>Se connecter</h3>
-          <ol class="api-steps">
-          <li><b>Réglages → Applis Subsonic</b><span>Générez un mot de passe dédié de 20 caractères. Celui de votre compte ne quitte jamais SonNuage.</span></li>
-          <li><b>Dans l’appli</b><span>L’adresse du serveur, votre nom d’utilisateur et ce mot de passe.</span></li>
-          <li><b>Révocable</b><span>Un clic le coupe sur tous les clients. Il sert aussi de clé <code>apiKey</code> OpenSubsonic.</span></li>
-          </ol>
-          <dl class="api-specs">
-          <div><dt>Authentification</dt><dd>Jeton salé (<code>t</code> et <code>s</code>), mot de passe (<code>p</code>, en clair ou <code>enc:</code>), clé <code>apiKey</code></dd></div>
-          <div><dt>Formats</dt><dd>XML, JSON et JSONP, en GET ou en formulaire POST</dd></div>
-          <div><dt>Extensions</dt><dd><code>apiKeyAuthentication</code> <code>formPost</code> <code>songLyrics</code> <code>transcodeOffset</code></dd></div>
-          <div><dt>Version</dt><dd>API 1.16.1, 36 méthodes, 52 avec les réponses vides</dd></div>
-          </dl>
-        </div>
-        <div class="api-groups" role="region" aria-label="Méthodes de l’API Subsonic prises en charge">
-          <h3 class="sr">Méthodes prises en charge</h3>
-          <article class="api-group reveal">
-            <h4>Parcourir</h4>
-            <p class="api-methods"><code>getArtists</code> <code>getIndexes</code> <code>getArtist</code> <code>getAlbum</code> <code>getSong</code> <code>getMusicDirectory</code> <code>getMusicFolders</code> <code>getGenres</code></p>
-            <p>Par artiste, album et genre (ID3), ou par dossiers pour DSub et les clients anciens. Index par lettre, «&nbsp;The&nbsp;», «&nbsp;Les&nbsp;», «&nbsp;Le&nbsp;», «&nbsp;La&nbsp;» ignorés.</p>
-          </article>
-          <article class="api-group reveal">
-            <h4>Listes et recherche</h4>
-            <p class="api-methods"><code>getAlbumList2</code> <code>getAlbumList</code> <code>getRandomSongs</code> <code>getSongsByGenre</code> <code>getTopSongs</code> <code>search3</code> <code>search2</code></p>
-            <p>Récents, fréquents, nouveautés, par année, par genre, au hasard. Recherche sans accents ; une recherche vide liste toute la bibliothèque par pages, pour la synchronisation.</p>
-          </article>
-          <article class="api-group reveal">
-            <h4>Écoute</h4>
-            <p class="api-methods"><code>stream</code> <code>download</code> <code>getCoverArt</code> <code>scrobble</code></p>
-            <p>Fichier d’origine, FLAC ou MP3 de 320 à 64 kbit/s selon <code>maxBitRate</code>, reprise en cours de titre (<code>timeOffset</code>). Les écoutes comptent dans vos titres les plus écoutés.</p>
-          </article>
-          <article class="api-group reveal">
-            <h4>Playlists et favoris</h4>
-            <p class="api-methods"><code>getPlaylists</code> <code>getPlaylist</code> <code>createPlaylist</code> <code>updatePlaylist</code> <code>deletePlaylist</code> <code>star</code> <code>unstar</code> <code>getStarred2</code> <code>getStarred</code></p>
-            <p>Les mêmes que dans les applis SonNuage. Favoris : titres seulement ; une étoile sur un album ou un artiste est acceptée sans effet.</p>
-          </article>
-          <article class="api-group reveal">
-            <h4>Paroles</h4>
-            <p class="api-methods"><code>getLyricsBySongId</code> <code>getLyrics</code></p>
-            <p>Synchronisées à la milliseconde quand elles le sont : fichier <code>.lrc</code> à côté du titre, sinon LRCLIB.</p>
-          </article>
-          <article class="api-group reveal">
-            <h4>Compte et serveur</h4>
-            <p class="api-methods"><code>ping</code> <code>getLicense</code> <code>getOpenSubsonicExtensions</code> <code>getUser</code> <code>getScanStatus</code> <code>startScan</code></p>
-            <p><code>startScan</code> renvoie l’état du scan : la bibliothèque est déjà surveillée en continu.</p>
-          </article>
-          <article class="api-group api-empty reveal">
-            <h4>Réponses vides, mais valides</h4>
-            <p class="api-methods"><code>getNowPlaying</code> <code>getPlayQueue</code> <code>savePlayQueue</code> <code>getArtistInfo</code> <code>getArtistInfo2</code> <code>getAlbumInfo</code> <code>getAlbumInfo2</code> <code>getSimilarSongs</code> <code>getSimilarSongs2</code> <code>getPodcasts</code> <code>getNewestPodcasts</code> <code>getInternetRadioStations</code> <code>getShares</code> <code>getBookmarks</code> <code>getVideos</code> <code>getChatMessages</code></p>
-            <p>Ces fonctions n’existent pas dans SonNuage : l’appli reçoit une liste vide et continue.</p>
-          </article>
-          <article class="api-group api-none reveal">
-            <h4>Non pris en charge</h4>
-            <p>Contrôle « jukebox », gestion des comptes et des partages, création de podcasts et de radios : réponse d’erreur standard.</p>
-          </article>
-        </div>
+      <div class="api-wrap reveal" role="region" aria-label="Prise en charge de l’API Subsonic">
+        <table class="api-table">
+          <thead>
+            <tr><th scope="col">Fonction</th><th scope="col">Prise en charge</th><th scope="col">Commentaire</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Bibliothèque : artistes, albums, titres, genres</th><td><span class="yes">Oui</span></td><td>Par tags ou par dossiers.</td></tr>
+            <tr><th scope="row">Recherche</th><td><span class="yes">Oui</span></td><td>Sans accents. Une recherche vide liste tout, pour la synchronisation.</td></tr>
+            <tr><th scope="row">Lecture et transcodage</th><td><span class="yes">Oui</span></td><td>Original, FLAC ou MP3 de 320 à 64 kbit/s, reprise en cours de titre.</td></tr>
+            <tr><th scope="row">Téléchargement et pochettes</th><td><span class="yes">Oui</span></td><td></td></tr>
+            <tr><th scope="row">Playlists</th><td><span class="yes">Oui</span></td><td>Les mêmes que dans les applis SonNuage.</td></tr>
+            <tr><th scope="row">Historique d’écoute (scrobble)</th><td><span class="yes">Oui</span></td><td>Compte dans vos titres les plus écoutés.</td></tr>
+            <tr><th scope="row">Paroles</th><td><span class="yes">Oui</span></td><td>Synchronisées : fichier <code>.lrc</code> ou LRCLIB.</td></tr>
+            <tr><th scope="row">Listes d’albums</th><td><span class="mid">En partie</span></td><td>« Mieux notés » donne les plus écoutés : pas de notes dans SonNuage.</td></tr>
+            <tr><th scope="row">Favoris</th><td><span class="mid">En partie</span></td><td>Titres seulement. Une étoile sur un album ou un artiste est ignorée.</td></tr>
+            <tr><th scope="row">Lancer un scan</th><td><span class="mid">En partie</span></td><td>Inutile : la bibliothèque est surveillée en continu.</td></tr>
+            <tr><th scope="row">Notes (1 à 5 étoiles)</th><td><span class="no">Non</span></td><td></td></tr>
+            <tr><th scope="row">File de lecture partagée entre appareils</th><td><span class="no">Non</span></td><td>Réponse vide, l’appli continue.</td></tr>
+            <tr><th scope="row">Infos d’artiste, titres similaires</th><td><span class="no">Non</span></td><td>Réponse vide, l’appli continue.</td></tr>
+            <tr><th scope="row">Podcasts, radios, partages, signets</th><td><span class="no">Non</span></td><td>Réponse vide, l’appli continue.</td></tr>
+            <tr><th scope="row">Jukebox, gestion des comptes</th><td><span class="no">Non</span></td><td></td></tr>
+          </tbody>
+        </table>
       </div>
-      <p class="note reveal">Vérifié par les tests d’intégration du serveur ; les retours sur votre client sont bienvenus. Si votre domaine passe par Cloudflare Access, laissez passer <code>/rest/*</code> : les applis Subsonic ne savent pas s’y connecter.</p>
+      <p class="note reveal">API 1.16.1 : jeton, mot de passe ou clé <code>apiKey</code> ; XML, JSON et JSONP. Extensions OpenSubsonic : <code>apiKeyAuthentication</code>, <code>formPost</code>, <code>songLyrics</code>, <code>transcodeOffset</code>. Derrière Cloudflare Access, laissez passer <code>/rest/*</code>.</p>
     </section>
 
     <!-- Comparatif -->

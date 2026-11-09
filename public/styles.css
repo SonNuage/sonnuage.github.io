@@ -238,32 +238,16 @@ h2 { font-size: clamp(36px, 5vw, 58px); line-height: 1.04; font-weight: 800; }
 .card a { color: var(--sun); text-underline-offset: 3px; }
 
 /* API Subsonic */
-.api-layout { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 16px; align-items: start; }
-.api-connect {
-  position: sticky; top: 100px; padding: 32px; border-radius: var(--radius); border: 1px solid rgba(255, 209, 102, 0.3);
-  background: linear-gradient(150deg, rgba(255, 209, 102, 0.08), rgba(155, 140, 255, 0.06));
-}
-.api-connect h3 { font-size: 24px; }
-.api-steps { list-style: none; counter-reset: api; margin: 20px 0 0; padding: 0; display: grid; gap: 16px; }
-.api-steps li { counter-increment: api; display: grid; grid-template-columns: 34px 1fr; column-gap: 14px; }
-.api-steps li::before {
-  content: counter(api); grid-row: span 2; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center;
-  font: 700 16px var(--display); background: var(--sun); color: #1a1530;
-}
-.api-steps b { font: 700 17px var(--display); }
-.api-steps span { color: var(--muted); font-size: 15px; }
-.api-specs { margin: 28px 0 0; padding-top: 20px; border-top: 1px solid var(--line); display: grid; gap: 12px; }
-.api-specs dt { font-size: 13px; font-weight: 600; color: var(--sun); text-transform: uppercase; letter-spacing: 0.06em; }
-.api-specs dd { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
-.api-groups { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-.api-group { padding: 24px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); }
-.api-group h4 { font: 700 19px var(--display); margin: 0; }
-.api-group p { margin: 10px 0 0; color: var(--muted); font-size: 14.5px; }
-.api-methods { display: flex; flex-wrap: wrap; gap: 6px; }
-.api-methods code { font-size: 12.5px; color: var(--mint); background: rgba(110, 231, 183, 0.08); border: 1px solid rgba(110, 231, 183, 0.18); }
-.api-empty, .api-none { grid-column: 1 / -1; border-style: dashed; background: transparent; }
-.api-empty .api-methods code { color: var(--muted); background: var(--panel); border-color: var(--line); }
-.api-none h4 { color: var(--coral); }
+.api-how { color: var(--muted); font-size: 16px; margin: 14px 0 0; }
+.api-how strong { color: var(--text); }
+.api-wrap { border-radius: var(--radius); border: 1px solid var(--line); background: var(--panel); overflow: hidden; }
+.api-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.api-table th, .api-table td { padding: 13px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+.api-table tbody tr:last-child > * { border-bottom: 0; }
+.api-table thead th { font: 700 14px var(--display); color: var(--faint); text-transform: uppercase; letter-spacing: 0.05em; background: rgba(255, 255, 255, 0.03); }
+.api-table tbody th { font-weight: 600; color: var(--text); width: 38%; }
+.api-table td { color: var(--muted); }
+.api-table td:nth-child(2) { width: 16%; white-space: nowrap; color: var(--text); }
 
 /* Clients */
 .devices { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; align-items: end; padding-top: 40px; }
@@ -370,8 +354,6 @@ h2 { font-size: clamp(36px, 5vw, 58px); line-height: 1.04; font-weight: 800; }
   .install-grid { grid-template-columns: 1fr; }
   .features { grid-template-columns: repeat(2, 1fr); }
   .card-wide { grid-column: auto; }
-  .api-layout { grid-template-columns: 1fr; }
-  .api-connect { position: static; }
   .minis { grid-template-columns: repeat(2, 1fr); }
   .libre-card { grid-template-columns: 1fr; padding: 32px; }
   .libre-visual { display: none; }
@@ -389,8 +371,12 @@ h2 { font-size: clamp(36px, 5vw, 58px); line-height: 1.04; font-weight: 800; }
   .fc2 { right: 0; top: 52%; }
   .fc3 { left: 0; bottom: 2%; }
   .features { grid-template-columns: 1fr; }
-  .api-groups { grid-template-columns: 1fr; }
-  .api-connect { padding: 24px; }
+  .api-table thead { display: none; }
+  .api-table tr { display: grid; grid-template-columns: auto 1fr; column-gap: 12px; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+  .api-table tbody tr:last-child { border-bottom: 0; }
+  .api-table th, .api-table td { padding: 0; border: 0; font-size: 14px; }
+  .api-table tbody th { grid-column: 1 / -1; width: auto; margin-bottom: 4px; }
+  .api-table td:nth-child(2) { width: auto; }
   .devices { grid-template-columns: repeat(3, 1fr); }
   .d-car, .d-ext { display: none; }
   .section { padding-top: 90px; }
