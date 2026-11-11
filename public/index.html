@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SonNuage, votre musique auto-hébergée</title>
   <meta name="description" content="SonNuage est un serveur de musique auto-hébergé façon Spotify : web, Android, Android Auto et bureau. Un conteneur, cinq minutes, licence AGPL-3.0.">
-  <meta name="theme-color" content="#0b0f22">
+  <meta name="theme-color" content="#101012">
   <meta property="og:title" content="SonNuage, votre musique auto-hébergée">
   <meta property="og:description" content="Votre bibliothèque en streaming sur le web, Android, Android Auto et le bureau. Un conteneur, cinq minutes.">
   <meta property="og:type" content="website">
@@ -14,27 +14,19 @@
   <link rel="alternate" hreflang="x-default" href="https://sonnuage.github.io/">
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="sky" aria-hidden="true">
-    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-    <canvas id="stars"></canvas>
-  </div>
-
   <header class="nav" id="nav">
     <a class="brand" href="#top" aria-label="SonNuage, accueil">
-      <img src="assets/logo.svg" alt="" width="34" height="34">
+      <img src="assets/logo.svg" alt="" width="30" height="30">
       <span>SonNuage</span>
     </a>
     <nav aria-label="Sections">
-      <a href="#histoire">Histoire</a>
+      <a href="#apercu">Aperçu</a>
       <a href="#fonctionnalites">Fonctionnalités</a>
-      <a href="#subsonic">Subsonic</a>
       <a href="#installer">Installer</a>
+      <a href="#subsonic">Subsonic</a>
       <a href="#comparatif">Comparatif</a>
       <a href="#libre">Libre</a>
     </nav>
@@ -45,249 +37,384 @@
   </header>
 
   <main id="top">
-    <!-- Accueil -->
     <section class="hero">
       <div class="hero-text">
-        <p class="eyebrow reveal">Serveur de musique auto-hébergé · AGPL-3.0</p>
-        <h1 class="reveal">Votre musique.<br><span class="grad">Votre nuage.</span><br>Partout.</h1>
-        <p class="lead reveal">SonNuage diffuse votre bibliothèque comme un service de streaming, mais depuis
-          <strong>votre</strong> machine : lecteur web, application Android avec Android Auto, appli de bureau.
-          Aucun abonnement, aucun compte chez un tiers, aucune publicité.</p>
-        <div class="cta reveal">
+        <p class="eyebrow">Serveur de musique auto-hébergé · AGPL-3.0</p>
+        <h1>Votre musique, servie depuis chez vous.</h1>
+        <p class="lead">SonNuage diffuse votre bibliothèque comme un service de streaming, mais depuis <strong>votre</strong> machine : lecteur web, application Android avec Android Auto, appli de bureau. Aucun abonnement, aucun compte chez un tiers, aucune publicité.</p>
+        <div class="cta">
           <a class="btn btn-primary" href="#installer">Installer en 5 minutes</a>
-          <a class="btn btn-ghost" href="#comparatif">Comparer aux alternatives</a>
+          <a class="btn btn-ghost" href="#apercu">Voir l'application</a>
         </div>
-        <ul class="chips reveal" aria-label="En bref">
-          <li>1 conteneur</li><li>Base SQLite intégrée</li><li>Prêt pour un tunnel Cloudflare</li><li>FR · EN</li>
+        <ul class="chips" aria-label="En bref">
+          <li>1 conteneur</li><li>Base SQLite intégrée</li><li>Prêt pour un tunnel Cloudflare</li><li>Interface en français et en anglais</li>
         </ul>
       </div>
+      <figure class="hero-shots">
+        <img class="shot shot-desk" src="assets/shots/home.jpg" alt="L'accueil de SonNuage dans un navigateur : radios thématiques et ajouts récents." width="800" height="499">
+        <img class="shot shot-phone" src="assets/shots/m-home.jpg" alt="L'accueil de SonNuage sur un téléphone." width="331" height="716">
+        <figcaption>Captures d'une instance réelle, novembre 2026.</figcaption>
+      </figure>
+    </section>
 
-      <div class="hero-visual reveal" aria-hidden="true">
-        <div class="orbit"><span></span><span></span><span></span></div>
-        <div class="player" id="player">
-          <div class="cover">
-            <div class="cover-art"></div>
-            <div class="eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <section class="section" id="apercu">
+      <div class="section-head">
+        <p class="eyebrow">L'application, telle qu'elle est</p>
+        <h2>Regardez avant d'installer.</h2>
+        <p class="sub">Chaque carte ouvre un aperçu : des captures prises sur une vraie instance, avec une vraie bibliothèque. Les pseudos des comptes sont floutés.</p>
+      </div>
+      <div class="tour">
+        <a class="tour-card" href="#preview-discover" data-preview="preview-discover">
+          <img src="assets/shots/discover.jpg" alt="" width="800" height="499" loading="lazy">
+          <h3>Découvrir</h3>
+          <p>Nouveautés de vos artistes, artistes proches, extraits de 30 s.</p>
+          <span class="tour-open">Aperçu</span>
+        </a>
+        <a class="tour-card" href="#preview-radios" data-preview="preview-radios">
+          <img src="assets/shots/radio.jpg" alt="" width="800" height="499" loading="lazy">
+          <h3>Radios thématiques</h3>
+          <p>Saisons, ambiances et météo, tirées de votre bibliothèque.</p>
+          <span class="tour-open">Aperçu</span>
+        </a>
+        <a class="tour-card" href="#preview-search" data-preview="preview-search">
+          <img src="assets/shots/search.jpg" alt="" width="800" height="499" loading="lazy">
+          <h3>Recherche</h3>
+          <p>Albums et artistes en carrousel, titres en liste.</p>
+          <span class="tour-open">Aperçu</span>
+        </a>
+        <a class="tour-card" href="#preview-library" data-preview="preview-library">
+          <img src="assets/shots/albums.jpg" alt="" width="800" height="499" loading="lazy">
+          <h3>Bibliothèque et playlists</h3>
+          <p>Albums, artistes, playlists, favoris et notes.</p>
+          <span class="tour-open">Aperçu</span>
+        </a>
+        <a class="tour-card" href="#preview-player" data-preview="preview-player">
+          <img src="assets/shots/playlist.jpg" alt="" width="800" height="499" loading="lazy">
+          <h3>Lecture et paroles</h3>
+          <p>Fondu enchaîné, lecture infinie, paroles synchronisées.</p>
+          <span class="tour-open">Aperçu</span>
+        </a>
+        <a class="tour-card" href="#preview-admin" data-preview="preview-admin">
+          <img src="assets/shots/admin.jpg" alt="" width="800" height="499" loading="lazy">
+          <h3>Administration</h3>
+          <p>Tableau de bord, tâches, comptes et réglages.</p>
+          <span class="tour-open">Aperçu</span>
+        </a>
+        <a class="tour-card" href="#preview-mobile" data-preview="preview-mobile">
+          <img src="assets/shots/m-home.jpg" alt="" width="331" height="716" loading="lazy">
+          <h3>Sur téléphone</h3>
+          <p>La même interface, pensée pour le pouce.</p>
+          <span class="tour-open">Aperçu</span>
+        </a>
+      </div>
+      <section class="preview" id="preview-discover" role="dialog" aria-modal="true" aria-labelledby="preview-discover-title">
+        <a class="preview-scrim" href="#apercu" tabindex="-1" aria-label="Fermer l'aperçu"></a>
+        <div class="preview-panel">
+          <header class="preview-head">
+            <h3 id="preview-discover-title">Découvrir</h3>
+            <a class="preview-close" href="#apercu" aria-label="Fermer l'aperçu">×</a>
+          </header>
+          <p class="preview-text">La page Découvrir réunit les sorties récentes et à venir des artistes de votre bibliothèque (MusicBrainz et ListenBrainz) et des artistes proches de ceux que vous écoutez le plus. Chaque titre s'écoute en extrait de 30 s avant d'être importé par un admin ou demandé par un contributeur.</p>
+          <div class="preview-shots" role="group" aria-label="Captures">
+            <figure>
+              <img src="assets/shots/discover.jpg" alt="La page Découvrir : radios, puis nouveautés avec leurs filtres." width="800" height="499" loading="lazy">
+              <figcaption>En haut, les radios ; dessous, les sorties des trois derniers mois et celles à venir.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/shots/releases.jpg" alt="La grille des nouveautés, avec extrait et import sur chaque parution." width="800" height="499" loading="lazy">
+              <figcaption>Chaque parution : un extrait sur la pochette, « Importer », ou « Ouvrir » si elle est déjà là.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/shots/release-songs.jpg" alt="La fenêtre d'une parution : ses titres, un extrait et un import par titre." width="800" height="499" loading="lazy">
+              <figcaption>Le titre d'une parution ouvre ses morceaux : à écouter et importer un par un, ou tous ensemble.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/shots/discover-artists.jpg" alt="Des artistes à découvrir, chacun avec ses titres phares." width="800" height="499" loading="lazy">
+              <figcaption>Artistes proches des vôtres, avec leurs titres phares. « Voir plus » cherche les suivants à l'instant.</figcaption>
+            </figure>
           </div>
-          <div class="meta">
-            <b class="track" id="track">Nuages de minuit</b>
-            <span class="artist" id="artist">Les Rêveurs Électriques</span>
-          </div>
-          <div class="progress"><div class="bar" id="bar"></div></div>
-          <div class="times"><span id="elapsed">1:12</span><span>FLAC → MP3 128</span><span>3:48</span></div>
-          <div class="controls">
-            <span class="ic shuffle"></span>
-            <span class="ic prev"></span>
-            <span class="play"><span></span></span>
-            <span class="ic next"></span>
-            <span class="ic repeat"></span>
-          </div>
+          <footer class="preview-foot">
+            <a href="#preview-mobile" data-preview="preview-mobile">← Précédent · Sur téléphone</a>
+            <a href="#preview-radios" data-preview="preview-radios">Suivant · Radios thématiques →</a>
+          </footer>
         </div>
-        <div class="float-card fc1"><span class="dot ok"></span>Premier octet en 0,1 s</div>
-        <div class="float-card fc2"><span class="dot"></span>Android Auto connecté</div>
-        <div class="float-card fc3"><span class="dot warn"></span>Pistes suivantes en cache</div>
+      </section>
+      <section class="preview" id="preview-radios" role="dialog" aria-modal="true" aria-labelledby="preview-radios-title">
+        <a class="preview-scrim" href="#apercu" tabindex="-1" aria-label="Fermer l'aperçu"></a>
+        <div class="preview-panel">
+          <header class="preview-head">
+            <h3 id="preview-radios-title">Radios thématiques</h3>
+            <a class="preview-close" href="#apercu" aria-label="Fermer l'aperçu">×</a>
+          </header>
+          <p class="preview-text">Les radios thématiques sont composées à partir de vos propres fichiers, grâce aux tags MusicBrainz et à une analyse audio faite sur votre serveur. Une radio s'ouvre sur un tirage de ses titres ; la lecture continue ensuite sans fin. La radio météo suit le temps qu'il fait chez vous.</p>
+          <div class="preview-shots" role="group" aria-label="Captures">
+            <figure>
+              <img src="assets/shots/radio.jpg" alt="La page de la radio Détente : un tirage de 50 titres." width="800" height="499" loading="lazy">
+              <figcaption>La page d'une radio : un tirage de ses titres, « Autre tirage », et la lecture à partir de n'importe lequel.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/shots/home.jpg" alt="L'accueil, avec la rangée des radios du moment." width="800" height="499" loading="lazy">
+              <figcaption>Sur l'accueil : les radios de la saison et les ambiances.</figcaption>
+            </figure>
+          </div>
+          <footer class="preview-foot">
+            <a href="#preview-discover" data-preview="preview-discover">← Précédent · Découvrir</a>
+            <a href="#preview-search" data-preview="preview-search">Suivant · Recherche →</a>
+          </footer>
+        </div>
+      </section>
+      <section class="preview" id="preview-search" role="dialog" aria-modal="true" aria-labelledby="preview-search-title">
+        <a class="preview-scrim" href="#apercu" tabindex="-1" aria-label="Fermer l'aperçu"></a>
+        <div class="preview-panel">
+          <header class="preview-head">
+            <h3 id="preview-search-title">Recherche</h3>
+            <a class="preview-close" href="#apercu" aria-label="Fermer l'aperçu">×</a>
+          </header>
+          <p class="preview-text">La recherche ignore les accents et trouve les sous-chaînes sans rien configurer ; avec Elasticsearch en option, elle tolère les fautes de frappe. Une demande comme « musique calme pour travailler » est comprise comme une ambiance et se lance en radio.</p>
+          <div class="preview-shots" role="group" aria-label="Captures">
+            <figure>
+              <img src="assets/shots/search.jpg" alt="Résultats de recherche : une ligne d'albums, une ligne d'artistes, puis les titres." width="800" height="499" loading="lazy">
+              <figcaption>Albums puis artistes sur une ligne qui défile sur place, les titres ensuite.</figcaption>
+            </figure>
+          </div>
+          <footer class="preview-foot">
+            <a href="#preview-radios" data-preview="preview-radios">← Précédent · Radios thématiques</a>
+            <a href="#preview-library" data-preview="preview-library">Suivant · Bibliothèque et playlists →</a>
+          </footer>
+        </div>
+      </section>
+      <section class="preview" id="preview-library" role="dialog" aria-modal="true" aria-labelledby="preview-library-title">
+        <a class="preview-scrim" href="#apercu" tabindex="-1" aria-label="Fermer l'aperçu"></a>
+        <div class="preview-panel">
+          <header class="preview-head">
+            <h3 id="preview-library-title">Bibliothèque et playlists</h3>
+            <a class="preview-close" href="#apercu" aria-label="Fermer l'aperçu">×</a>
+          </header>
+          <p class="preview-text">La bibliothèque suit votre dossier de musique : un album copié apparaît tout seul. Titres, albums et artistes se mettent en favoris et se notent de 1 à 5 étoiles ; les playlists se réordonnent et se partagent avec les applis Subsonic.</p>
+          <div class="preview-shots" role="group" aria-label="Captures">
+            <figure>
+              <img src="assets/shots/albums.jpg" alt="La bibliothèque, onglet Albums, triée par ajout récent." width="800" height="499" loading="lazy">
+              <figcaption>Les albums, triés et filtrés.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/shots/album.jpg" alt="La page d'un album : pochette, titres, favoris et note." width="800" height="499" loading="lazy">
+              <figcaption>Un album : lecture, aléatoire, favori, ajout à une playlist, note.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/shots/playlists.jpg" alt="La liste des playlists." width="800" height="499" loading="lazy">
+              <figcaption>Les playlists, avec les titres likés et l'historique d'écoute.</figcaption>
+            </figure>
+          </div>
+          <footer class="preview-foot">
+            <a href="#preview-search" data-preview="preview-search">← Précédent · Recherche</a>
+            <a href="#preview-player" data-preview="preview-player">Suivant · Lecture et paroles →</a>
+          </footer>
+        </div>
+      </section>
+      <section class="preview" id="preview-player" role="dialog" aria-modal="true" aria-labelledby="preview-player-title">
+        <a class="preview-scrim" href="#apercu" tabindex="-1" aria-label="Fermer l'aperçu"></a>
+        <div class="preview-panel">
+          <header class="preview-head">
+            <h3 id="preview-player-title">Lecture et paroles</h3>
+            <a class="preview-close" href="#apercu" aria-label="Fermer l'aperçu">×</a>
+          </header>
+          <p class="preview-text">Le lecteur précharge les pistes suivantes, enchaîne avec un fondu réglable et ne s'arrête pas à la fin de la file si la lecture infinie est activée. Les paroles synchronisées suivent la musique ; un appui sur une ligne y saute.</p>
+          <div class="preview-shots" role="group" aria-label="Captures">
+            <figure>
+              <img src="assets/shots/playlist.jpg" alt="Une playlist en cours de lecture, avec la barre du lecteur." width="800" height="499" loading="lazy">
+              <figcaption>Une playlist en lecture : file, aléatoire, répétition, volume.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/shots/lyrics.jpg" alt="L'écran de lecture avec les paroles, floutées sur la capture." width="800" height="499" loading="lazy">
+              <figcaption>Les paroles synchronisées (floutées ici : elles appartiennent à leurs auteurs).</figcaption>
+            </figure>
+          </div>
+          <footer class="preview-foot">
+            <a href="#preview-library" data-preview="preview-library">← Précédent · Bibliothèque et playlists</a>
+            <a href="#preview-admin" data-preview="preview-admin">Suivant · Administration →</a>
+          </footer>
+        </div>
+      </section>
+      <section class="preview" id="preview-admin" role="dialog" aria-modal="true" aria-labelledby="preview-admin-title">
+        <a class="preview-scrim" href="#apercu" tabindex="-1" aria-label="Fermer l'aperçu"></a>
+        <div class="preview-panel">
+          <header class="preview-head">
+            <h3 id="preview-admin-title">Administration</h3>
+            <a class="preview-close" href="#apercu" aria-label="Fermer l'aperçu">×</a>
+          </header>
+          <p class="preview-text">Tout se règle depuis l'interface : imports, envoi de fichiers, métadonnées, doublons, comptes et rôles (utilisateur, contributeur, administrateur). Les tâches de fond sont visibles en direct, file par file ; chacune se met en pause, et les plus lourdes peuvent attendre des heures calmes.</p>
+          <div class="preview-shots" role="group" aria-label="Captures">
+            <figure>
+              <img src="assets/shots/admin.jpg" alt="La vue d'ensemble : compteurs, durée totale et stockage." width="800" height="499" loading="lazy">
+              <figcaption>La vue d'ensemble : bibliothèque, durée, stockage, historique des ajouts.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/shots/tasks.jpg" alt="Les files de tâches et la suite en cours." width="800" height="499" loading="lazy">
+              <figcaption>Les tâches, file par file, avec leur journal.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/shots/users.jpg" alt="La liste des comptes, pseudos floutés." width="800" height="499" loading="lazy">
+              <figcaption>Les comptes : rôle, demandes par jour, approbation automatique. Pseudos floutés.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/shots/settings.jpg" alt="Les réglages : heures calmes et stockage." width="800" height="499" loading="lazy">
+              <figcaption>Heures calmes pour les tâches lourdes, place réservée aux extraits.</figcaption>
+            </figure>
+          </div>
+          <footer class="preview-foot">
+            <a href="#preview-player" data-preview="preview-player">← Précédent · Lecture et paroles</a>
+            <a href="#preview-mobile" data-preview="preview-mobile">Suivant · Sur téléphone →</a>
+          </footer>
+        </div>
+      </section>
+      <section class="preview" id="preview-mobile" role="dialog" aria-modal="true" aria-labelledby="preview-mobile-title">
+        <a class="preview-scrim" href="#apercu" tabindex="-1" aria-label="Fermer l'aperçu"></a>
+        <div class="preview-panel">
+          <header class="preview-head">
+            <h3 id="preview-mobile-title">Sur téléphone</h3>
+            <a class="preview-close" href="#apercu" aria-label="Fermer l'aperçu">×</a>
+          </header>
+          <p class="preview-text">Les pages sont partagées entre le web, Android et le bureau : une fonctionnalité ajoutée arrive sur tous les clients à la fois. Sur Android s'ajoutent le cache hors connexion, l'écran de verrouillage et Android Auto. Une appli iOS reprend le même code : sa CI produit un <code>.ipa</code> non signé, à installer soi-même (sans CarPlay).</p>
+          <div class="preview-shots phones" role="group" aria-label="Captures">
+            <figure>
+              <img src="assets/shots/m-home.jpg" alt="L'accueil sur un écran de téléphone." width="331" height="716" loading="lazy">
+              <figcaption>L'accueil : playlists, radios, ajouts récents.</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/shots/m-discover.jpg" alt="Les artistes à découvrir sur un écran de téléphone." width="331" height="716" loading="lazy">
+              <figcaption>Découvrir : un extrait, puis « Demander ».</figcaption>
+            </figure>
+          </div>
+          <footer class="preview-foot">
+            <a href="#preview-admin" data-preview="preview-admin">← Précédent · Administration</a>
+            <a href="#preview-discover" data-preview="preview-discover">Suivant · Découvrir →</a>
+          </footer>
+        </div>
+      </section>
+    </section>
+
+    <section class="section" id="fonctionnalites">
+      <div class="section-head">
+        <p class="eyebrow">Tout ce qu'on attend d'un service de streaming</p>
+        <h2>Pensé pour l'écoute au quotidien.</h2>
+      </div>
+      <div class="features">
+        <article class="feature">
+          <h3>Bibliothèque vivante</h3>
+          <p>Scan incrémental des tags, repli sur <code>Artiste/Album/NN titre</code>, pochettes intégrées ou du dossier, doublons « (1) » écartés. Le dossier est surveillé en continu.</p>
+        </article>
+        <article class="feature">
+          <h3>Transcodage instantané</h3>
+          <p>Originale, FLAC, MP3 320 à 64. Le flux part pendant l'encodage, puis reste en cache. Un fichier n'est jamais « surclassé ».</p>
+        </article>
+        <article class="feature">
+          <h3>Réseau capricieux ? Aucun souci</h3>
+          <p>Pistes suivantes préchargées, cache disque de 1 Go et tampon de 5 min sur Android, reprise automatique, qualité distincte en données mobiles.</p>
+        </article>
+        <article class="feature">
+          <h3>Fondu enchaîné, lecture infinie</h3>
+          <p>Un <strong>fondu enchaîné</strong> réglable de 0 à 5 s entre deux titres. Avec la <strong>lecture infinie</strong>, la file ne s'arrête jamais : même genre, puis même artiste, puis le reste de la bibliothèque.</p>
+        </article>
+        <article class="feature">
+          <h3>Nouveautés de vos artistes</h3>
+          <p>Sorties des trois derniers mois et à venir, d'après MusicBrainz et ListenBrainz, sans compilations ni live. Une parution s'ouvre sur ses titres, à écouter en extrait et à importer un par un ou en entier.</p>
+        </article>
+        <article class="feature">
+          <h3>Artistes à découvrir</h3>
+          <p>Des artistes proches de ceux que vous écoutez le plus, avec leurs titres phares en extrait de 30 s. Un titre demandé ou importé laisse sa place au suivant.</p>
+        </article>
+        <article class="feature">
+          <h3>Radios thématiques</h3>
+          <p>Halloween, Noël, l'été, « Pop bonne humeur », détente ou concentration, et une radio météo selon le temps qu'il fait chez vous. Tirées de votre bibliothèque grâce aux tags MusicBrainz et à une analyse audio locale.</p>
+        </article>
+        <article class="feature">
+          <h3>Favoris et notes</h3>
+          <p>Titres, albums et artistes en favoris, notes de 1 à 5 étoiles. Les morceaux mal notés sortent des radios, vos préférés y passent plus souvent.</p>
+        </article>
+        <article class="feature">
+          <h3>Paroles synchronisées</h3>
+          <p>La ligne chantée suit la musique, un appui y saute. Un fichier <code>.lrc</code> à côté du titre passe en premier, sinon LRCLIB, une base libre et sans compte.</p>
+        </article>
+        <article class="feature">
+          <h3>Page artiste</h3>
+          <p>Ses 10 <strong>titres les plus écoutés</strong> en tête, « Voir tout » pour la suite, puis la discographie album par album.</p>
+        </article>
+        <article class="feature">
+          <h3>Recherche tolérante</h3>
+          <p>Sans rien configurer : sous-chaînes, sans accents. Avec Elasticsearch en option : fautes de frappe, « Vouliez-vous dire… ? », <code>acdc</code> trouve AC/DC. Une ambiance demandée en toutes lettres se lance en radio.</p>
+        </article>
+        <article class="feature">
+          <h3>Vos réglages vous suivent</h3>
+          <p>Fondu, lecture infinie et langue de l'interface suivent votre compte sur tous vos appareils, avec une copie locale hors connexion. La qualité audio reste propre à chaque appareil.</p>
+        </article>
+        <article class="feature">
+          <h3>Android & Android Auto</h3>
+          <p>Une vraie appli, avec écran de verrouillage, onglets Playlists, Albums, Artistes et Récents dans la voiture, recherche et commande vocale.</p>
+        </article>
+        <article class="feature">
+          <h3>Bureau léger</h3>
+          <p>Windows, macOS et Linux, avec icône dans la barre système. Écrit en .NET sur la webview du système : pas de Chromium embarqué.</p>
+        </article>
+        <article class="feature">
+          <h3>Import YouTube soigné</h3>
+          <p>Recherche, playlists, chaînes, abonnements synchronisés. Métadonnées recomposées par MusicBrainz et l'empreinte AcoustID, pochette officielle, audio jamais réencodé. Réservé aux admins.</p>
+        </article>
+        <article class="feature">
+          <h3>Demandes et rôles</h3>
+          <p>Un contributeur écoute un extrait puis demande un titre ou un album ; l'admin approuve, ou accorde l'approbation automatique et un nombre de demandes par jour.</p>
+        </article>
+        <article class="feature">
+          <h3>Administration complète</h3>
+          <p>Tableau de bord, envoi d'albums en reprise possible, édition des tags et pochettes, comptes, file de tâches visible en direct.</p>
+        </article>
+        <article class="feature">
+          <h3>Heures calmes et sauvegardes</h3>
+          <p>Chaque file de tâches se met en pause ; les plus lourdes, comme l'analyse audio, peuvent attendre une plage horaire. La base SQLite se sauvegarde depuis les réglages.</p>
+        </article>
+        <article class="feature">
+          <h3>Sécurisé par défaut</h3>
+          <p>Aucun port à exposer avec un tunnel Cloudflare, limitation des tentatives de connexion, flux protégés par jeton et jamais mis en cache par le CDN.</p>
+        </article>
+        <article class="feature">
+          <h3>Applis Subsonic</h3>
+          <p>Symfonium, Feishin, DSub ou Tempo se branchent sur l'API Subsonic et OpenSubsonic, avec un mot de passe dédié et révocable par compte. <a href="#subsonic">Ce qui est pris en charge</a></p>
+        </article>
       </div>
     </section>
 
-    <!-- Défilant -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>Web</span><span>Android</span><span>Android Auto</span><span>Windows</span><span>macOS</span><span>Linux</span><span>Firefox · Chrome · Edge</span><span>FLAC</span><span>Opus</span><span>MP3</span><span>MusicBrainz</span><span>AcoustID</span>
-        <span>Web</span><span>Android</span><span>Android Auto</span><span>Windows</span><span>macOS</span><span>Linux</span><span>Firefox · Chrome · Edge</span><span>FLAC</span><span>Opus</span><span>MP3</span><span>MusicBrainz</span><span>AcoustID</span>
-      </div>
-    </div>
-
-    <!-- Histoire -->
-    <section class="section story" id="histoire">
-      <div class="story-card reveal">
-        <div class="story-text">
-          <p class="eyebrow">L'histoire</p>
-          <h2>Un projet jeune, né d'une lassitude.</h2>
-          <p>SonNuage est né en <strong>août 2026</strong>. J'étais lassé des solutions classiques : aucune ne collait
-            vraiment à mon usage. Il y avait toujours un compromis de trop, un service de plus à maintenir, une appli
-            qui manquait, une fonction qui n'était pas pensée pour écouter sa propre musique au quotidien.</p>
-          <p>Alors j'ai construit celui que je voulais utiliser. Le projet est jeune et avance vite.</p>
-        </div>
-        <ol class="timeline" aria-label="Étapes du projet">
-          <li><b>Août 2026</b><span>Première ligne de code</span></li>
-          <li><b>Octobre 2026</b><span>Import YouTube, gestionnaire de tâches, recherche</span></li>
-          <li><b>Novembre 2026</b><span>Appli de bureau, version 1.0, logiciel libre, API Subsonic, radios thématiques</span></li>
-          <li class="next"><b>Ensuite</b><span>Ce que vous proposerez</span></li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Installation -->
     <section class="section install" id="installer">
-      <div class="section-head reveal">
+      <div class="section-head">
         <p class="eyebrow">L'auto-hébergement sans la corvée</p>
         <h2>Trois étapes, et c'est en ligne.</h2>
-        <p class="sub">Un seul conteneur embarque le serveur, le client web, ffmpeg et la base de données.
-          Le déploiement d'exemple est prêt pour <em>votre propre</em> tunnel Cloudflare (un compte gratuit suffit) :
-          le service devient joignable de partout sans ouvrir un seul port sur votre box.</p>
+        <p class="sub">Un seul conteneur embarque le serveur, le client web, ffmpeg et la base de données. Le déploiement d'exemple est prêt pour <em>votre propre</em> tunnel Cloudflare (un compte gratuit suffit) : le service devient joignable de partout sans ouvrir un seul port sur votre box.</p>
       </div>
-
       <div class="install-grid">
         <ol class="steps">
-          <li class="step reveal" data-step="0">
-            <span class="num">1</span>
-            <div><h3>Récupérez le déploiement</h3>
-              <p>Un <code>compose.yaml</code> et un <code>.env</code> d'exemple, rien d'autre.</p></div>
+          <li class="step">
+            <h3>Récupérez le déploiement</h3>
+            <p>Un <code>compose.yaml</code> et un <code>.env</code> d'exemple, rien d'autre.</p>
           </li>
-          <li class="step reveal" data-step="1">
-            <span class="num">2</span>
-            <div><h3>Indiquez votre dossier de musique</h3>
-              <p>Il est monté en lecture seule : SonNuage n'y modifie rien. Les imports YouTube et les fichiers envoyés vont dans un dossier séparé.</p></div>
+          <li class="step">
+            <h3>Indiquez votre dossier de musique</h3>
+            <p>Il est monté en lecture seule : SonNuage n'y modifie rien. Les imports YouTube et les fichiers envoyés vont dans un dossier séparé.</p>
           </li>
-          <li class="step reveal" data-step="2">
-            <span class="num">3</span>
-            <div><h3>Démarrez</h3>
-              <p>La bibliothèque est scannée, puis surveillée : un album copié apparaît tout seul.</p></div>
+          <li class="step">
+            <h3>Démarrez</h3>
+            <p>La bibliothèque est scannée, puis surveillée : un album copié apparaît tout seul.</p>
           </li>
         </ol>
-
-        <div class="terminal reveal" role="img" aria-label="Terminal : cp .env.example .env, renseigner MUSIC_DIR, puis docker compose up -d">
-          <div class="term-bar"><i></i><i></i><i></i><span>~</span></div>
-          <pre class="term-body" id="term"></pre>
-        </div>
+        <pre class="terminal" role="img" aria-label="Terminal : cp .env.example .env, renseigner MUSIC_DIR, puis docker compose up -d"><code>cp .env.example .env
+# dans .env : MUSIC_DIR=/chemin/vers/votre/musique
+docker compose up -d</code></pre>
       </div>
-
-      <div class="minis">
-        <div class="mini reveal"><b class="count" data-to="1">0</b><span>conteneur, base SQLite incluse</span></div>
-        <div class="mini reveal"><b class="count" data-to="0" data-from="9">9</b><span>port ouvert sur votre box, avec votre tunnel Cloudflare</span></div>
-        <div class="mini reveal"><b><span class="count" data-to="40">0</span> Mo</b><span>pour l'appli de bureau, sans Electron</span></div>
-        <div class="mini reveal"><b>0,<span class="count" data-to="1">0</span> s</b><span>avant le premier octet transcodé</span></div>
-      </div>
+      <dl class="facts">
+        <div><dt>1</dt><dd>conteneur, base SQLite incluse</dd></div>
+        <div><dt>0</dt><dd>port ouvert sur votre box, avec votre tunnel Cloudflare</dd></div>
+        <div><dt>40 Mo</dt><dd>pour l'appli de bureau, sans Electron</dd></div>
+        <div><dt>0,1 s</dt><dd>avant le premier octet transcodé</dd></div>
+      </dl>
     </section>
 
-    <!-- Fonctionnalités -->
-    <section class="section" id="fonctionnalites">
-      <div class="section-head reveal">
-        <p class="eyebrow">Tout ce qu'on attend d'un service de streaming</p>
-        <h2>Pensé pour l'écoute, pas pour la démo.</h2>
-      </div>
-
-      <div class="features">
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M4 5h6l2 2h8v12H4z"/><path d="M9 15a1.5 1.5 0 1 0 0-.01M15 13a1.5 1.5 0 1 0 0-.01M10.5 15V10l6-1.5V13"/></svg>
-          </div>
-          <h3>Bibliothèque vivante</h3>
-          <p>Scan incrémental des tags, repli sur <code>Artiste/Album/NN titre</code>, pochettes intégrées ou du dossier,
-            doublons « (1) » écartés. Le dossier est surveillé en continu.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
-          <h3>Transcodage instantané</h3>
-          <p>Originale, FLAC, MP3 320 à 64. Le flux part pendant l'encodage, puis reste en cache.
-            Un fichier n'est jamais « surclassé ».</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1"/></svg></div>
-          <h3>Réseau capricieux ? Aucun souci</h3>
-          <p>Pistes suivantes préchargées, cache disque de 1 Go et tampon de 5 min sur Android, reprise automatique,
-            qualité distincte en données mobiles.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 17c4 0 6-10 10-10M11 17c4 0 6-10 10-10"/></svg></div>
-          <h3>Fondu enchaîné, lecture infinie</h3>
-          <p>Un <strong>fondu enchaîné</strong> réglable de 0 à 5 s entre deux titres. Avec la <strong>lecture infinie</strong>,
-            la file ne s'arrête jamais : même genre, puis même artiste, puis le reste de la bibliothèque.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></div>
-          <h3>Page artiste</h3>
-          <p>Ses 10 <strong>titres les plus écoutés</strong> en tête, « Voir tout » pour la suite, puis la discographie
-            album par album.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1-.5-8 6 6 0 0 1 11.5 1.5A3.5 3.5 0 0 1 17.5 18z"/><path d="m9.5 13.5 2 2 3.5-3.5"/></svg></div>
-          <h3>Vos réglages vous suivent</h3>
-          <p>Fondu, lecture infinie et langue de l'interface suivent votre compte sur tous vos appareils, avec une copie
-            locale hors connexion. La qualité audio reste propre à chaque appareil.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 17h14l-1.5-6.5A2 2 0 0 0 15.6 9H8.4a2 2 0 0 0-1.9 1.5zM5 17v2M19 17v2"/><circle cx="8" cy="14" r="1"/><circle cx="16" cy="14" r="1"/></svg></div>
-          <h3>Android & Android Auto</h3>
-          <p>Une vraie appli, avec écran de verrouillage, onglets Playlists, Albums, Artistes et Récents dans la voiture,
-            recherche et commande vocale.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
-          <h3>Bureau léger</h3>
-          <p>Windows, macOS et Linux, avec icône dans la barre système. Écrit en .NET sur la webview du système :
-            pas de Chromium embarqué.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg></div>
-          <h3>Import YouTube soigné</h3>
-          <p>Recherche, playlists, chaînes, abonnements synchronisés. Métadonnées recomposées par MusicBrainz et
-            l'empreinte AcoustID, pochette officielle, audio jamais réencodé. Réservé aux admins.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
-          <h3>Recherche tolérante</h3>
-          <p>Sans rien configurer : sous-chaînes, sans accents. Avec Elasticsearch en option : fautes de frappe,
-            « Vouliez-vous dire… ? », <code>acdc</code> trouve AC/DC.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
-          <h3>Administration complète</h3>
-          <p>Tableau de bord, envoi d'albums en reprise possible, édition des tags et pochettes, comptes,
-            file de tâches visible en direct.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
-          <h3>Sécurisé par défaut</h3>
-          <p>Aucun port à exposer avec un tunnel Cloudflare, limitation des tentatives de connexion, flux protégés par jeton
-            et jamais mis en cache par le CDN.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div>
-          <h3>Paroles synchronisées</h3>
-          <p>La ligne chantée suit la musique, un appui y saute. Un fichier <code>.lrc</code> à côté du titre passe en
-            premier, sinon LRCLIB, une base libre et sans compte.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="m7 8 9-5"/><circle cx="15" cy="14" r="3"/><path d="M6 12h3M6 16h3"/></svg></div>
-          <h3>Radios thématiques</h3>
-          <p>Halloween, Noël, l'été, « Pop bonne humeur », détente ou concentration, et une radio météo selon le temps
-            qu'il fait chez vous. Tirées de votre bibliothèque grâce aux tags MusicBrainz et à une analyse audio locale.</p>
-        </article>
-        <article class="card reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/></svg></div>
-          <h3>Favoris et notes</h3>
-          <p>Titres, albums et artistes en favoris, notes de 1 à 5 étoiles. Les morceaux mal notés sortent des radios,
-            vos préférés y passent plus souvent.</p>
-        </article>
-        <article class="card card-wide reveal">
-          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="2"/><rect x="14" y="4" width="7" height="16" rx="2"/><path d="M10 12h4"/></svg></div>
-          <h3>Applis Subsonic</h3>
-          <p>Symfonium, Feishin, DSub ou Tempo se branchent sur l'API Subsonic et OpenSubsonic, avec un mot de passe
-            dédié et révocable par compte. <a href="#subsonic">Ce qui est pris en charge</a></p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Clients -->
-    <section class="section clients">
-      <div class="section-head reveal">
-        <p class="eyebrow">Un serveur, tous vos appareils</p>
-        <h2>La même interface, partout.</h2>
-        <p class="sub">Les pages sont partagées entre le web, Android et le bureau : une fonctionnalité ajoutée arrive sur tous les clients à la fois.
-          Une appli iOS reprend le même code : sa CI produit un <code>.ipa</code> non signé, à installer soi-même (sans CarPlay).</p>
-      </div>
-      <div class="devices reveal">
-        <div class="device d-web"><span>Navigateur</span></div>
-        <div class="device d-desk"><span>Bureau</span></div>
-        <div class="device d-phone"><span>Android</span></div>
-        <div class="device d-car"><span>Android Auto</span></div>
-        <div class="device d-ext"><span>Extension</span></div>
-        <svg class="links" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M100 100 Q500 -40 900 100" />
-        </svg>
-      </div>
-    </section>
 
     <!-- Subsonic -->
     <section class="section subsonic" id="subsonic">
@@ -446,6 +573,23 @@
             <a class="btn btn-ghost" href="https://github.com/SonNuage/sonnuage">Relire le code</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section story" id="histoire">
+      <div class="story-card">
+        <div class="story-text">
+          <p class="eyebrow">L'histoire</p>
+          <h2>Un projet jeune, né d'une lassitude.</h2>
+          <p>SonNuage est né en <strong>août 2026</strong>. J'étais lassé des solutions classiques : aucune ne collait vraiment à mon usage. Il y avait toujours un compromis de trop, un service de plus à maintenir, une appli qui manquait, une fonction qui n'était pas pensée pour écouter sa propre musique au quotidien.</p>
+          <p>Alors j'ai construit celui que je voulais utiliser. Le projet est jeune et avance vite.</p>
+        </div>
+        <ol class="timeline" aria-label="Étapes du projet">
+          <li><b>Août 2026</b><span>Première ligne de code</span></li>
+          <li><b>Octobre 2026</b><span>Import YouTube, gestionnaire de tâches, recherche</span></li>
+          <li><b>Novembre 2026</b><span>Appli de bureau, version 1.0, logiciel libre, API Subsonic, radios thématiques, nouveautés et découverte d'artistes</span></li>
+          <li><b>Ensuite</b><span>Ce que vous proposerez</span></li>
+        </ol>
       </div>
     </section>
   </main>

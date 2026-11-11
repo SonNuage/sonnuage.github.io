@@ -1,7 +1,8 @@
 // Vérifications du site statique, sans dépendance : node tests/check.mjs
 // Les deux pages (FR et EN) doivent avoir la même structure, des liens internes valides,
 // la liste complète des dépôts et les fonctionnalités récentes. Code de sortie 1 si une règle échoue.
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 
 const pages = {
   fr: { file: "public/index.html", other: "en/", otherLang: "en" },
@@ -23,6 +24,10 @@ const facts = [
   { fr: /radios thématiques/i, en: /themed radios/i },
   { fr: /radio météo/i, en: /weather radio/i },
   { fr: /notes de 1 à 5/i, en: /ratings from 1 to 5/i },
+  { fr: /nouveautés de vos artistes/i, en: /new releases from your artists/i },
+  { fr: /artistes à découvrir/i, en: /artists to discover/i },
+  { fr: /extraits? de 30 s/i, en: /30-second previews?/i },
+  { fr: /heures calmes/i, en: /quiet hours/i },
 ];
 
 const voids = new Set(["meta", "link", "img", "br", "input", "source", "hr", "wbr"]);
@@ -70,6 +75,14 @@ for (const [lang, p] of Object.entries(pages)) {
     fail(lang, `bouton de langue vers ${p.other} (${p.otherLang}) attendu`);
   for (const [hl, url] of [["fr", "https://sonnuage.github.io/"], ["en", "https://sonnuage.github.io/en/"], ["x-default", "https://sonnuage.github.io/"]])
     if (!tags.some((t) => t.name === "link" && t.attrs.hreflang === hl && t.attrs.href === url)) fail(lang, `hreflang ${hl} → ${url} manquant`);
+
+  // Aperçus : chaque carte ouvre un panneau qui existe, et il y en a ; chaque image locale est dans le dépôt
+  const openers = tags.filter((t) => t.attrs["data-preview"]);
+  if (!openers.length) fail(lang, "aucun aperçu de fonctionnalité");
+  for (const t of openers)
+    if (!ids.has(t.attrs["data-preview"]) || t.attrs.href !== `#${t.attrs["data-preview"]}`) fail(lang, `aperçu sans panneau : ${t.attrs["data-preview"]}`);
+  for (const t of tags.filter((t) => t.name === "img" && !/^https?:/.test(t.attrs.src ?? "")))
+    if (!existsSync(join(dirname(p.file), t.attrs.src ?? ""))) fail(lang, `image absente du dépôt : ${t.attrs.src}`);
 
   // Accessibilité
   for (const t of tags.filter((t) => t.name === "img")) if (!("alt" in t.attrs)) fail(lang, `img sans alt : ${t.attrs.src}`);
